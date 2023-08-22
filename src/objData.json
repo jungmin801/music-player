@@ -1,0 +1,14 @@
+[
+    {
+        "artist" : "Ed Sheeran",
+        "song" : "Perfect",
+        "image" : "/img/edsheeran.jpg",
+        "audio" : "../audio/edsheeran.mp3"
+    },
+    {
+        "artist" : "Daft Punk",
+        "song" : "Instant Crush",
+        "image" : "../img/DaftPunk.jpg",
+        "audio" : "../audio/DaftPunk.mp3"
+    }
+]

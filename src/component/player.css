@@ -1,0 +1,89 @@
+/* player */
+
+:root{
+    /* color */
+    --bg: #090424;
+}
+
+footer{
+    width: 100%;
+    height: 80px;
+    background-color: var(--bg);
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+    position: absolute;
+    bottom: 0;
+}
+.btn-play-group,
+.btn-utility-group{
+    display: inline-flex;
+    align-items: center;
+    gap: 1em;
+}
+
+.btn-play-group .btn{
+    width: 38px;
+    height: 26px;
+    
+    background-position: 0 0;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+.btn-play-group .btn.rewind{
+    background-image: url(../../public/icon/btn_rewind.png);
+}
+.btn-play-group .btn.fast-forward{
+    background-image: url(../../public/icon/btn_forward.png);
+}
+
+.btn-play-group .btn.play{
+    width: 45px;
+    height: 45px;
+    background-image: url(../../public/icon/btn_play.png);
+}
+
+
+.btn-play-group .btn.reset{
+    background-image: url(../../public/icon/Restart.png);
+}
+
+
+
+.btn-utility-group .btn{
+    width: 38px;
+    height: 38px;
+    background-position: 0 0;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+.btn-utility-group .btn.restart{
+    background-image: url(../../public/icon/Restart.png);
+}
+
+.btn-utility-group .btn.shuffle{
+    background-image: url(../../public/icon/Shuffle.png);
+}
+
+.btn-utility-group .btn.volume{
+    background-image: url(../../public/icon/Speaker.png);
+}
+
+.timeline{
+    
+}
+
+.timeline p {
+    display: inline-block;
+    margin-right: 24px;
+    vertical-align: middle;
+}
+
+.timeline .progress-bg{
+    display: inline-block;
+    width: 640px;
+    height: 4px;
+    background-color: #fff;
+}

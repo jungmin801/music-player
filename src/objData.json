@@ -1,0 +1,20 @@
+[
+    {
+        "artist" : "Ed Sheeran",
+        "song" : "Perfect",
+        "image" : "/img/edsheeran.jpg",
+        "audio" : "../audio/Ed Sheeran_Castle On The Hill.mp3"
+    },
+    {
+        "artist" : "Daft Punk",
+        "song" : "Instant Crush (Feat. Julian Casablancas)",
+        "image" : "../img/DaftPunk.jpg",
+        "audio" : "../audio/Daft Punk_Instant Crush (Feat. Julian Casablancas).mp3"
+    },
+    {
+        "artist" : "Oasis",
+        "song" : "Live Forever",
+        "image" : "../img/Oasis_Definitely Maybe.jpg",
+        "audio" : "../audio/Oasis_Live Forever.mp3"
+    }
+]

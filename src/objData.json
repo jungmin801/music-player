@@ -1,20 +1,20 @@
 [
     {
         "artist" : "Ed Sheeran",
-        "song" : "Perfect",
+        "song" : "Castle On The Hill",
         "image" : "/img/edsheeran.jpg",
-        "audio" : "../audio/Ed Sheeran_Castle On The Hill.mp3"
+        "audio" : "/assets/Ed Sheeran_Castle On The Hill.mp3"
     },
     {
         "artist" : "Daft Punk",
         "song" : "Instant Crush (Feat. Julian Casablancas)",
-        "image" : "../img/DaftPunk.jpg",
-        "audio" : "../audio/Daft Punk_Instant Crush (Feat. Julian Casablancas).mp3"
+        "image" : "/img/DaftPunk.jpg",
+        "audio" : "/assets/Daft Punk_Instant Crush (Feat. Julian Casablancas).mp3"
     },
     {
         "artist" : "Oasis",
         "song" : "Live Forever",
-        "image" : "../img/Oasis_Definitely Maybe.jpg",
-        "audio" : "../audio/Oasis_Live Forever.mp3"
+        "image" : "/img/Oasis_Definitely-Maybe.jpg",
+        "audio" : "/assets/Oasis_Live Forever.mp3"
     }
 ]

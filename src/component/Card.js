@@ -1,13 +1,12 @@
-import objData from "../objData.json"
-import nowPlayingCSS from "./css/nowPlaying.css"
+import cardCss from "./css/card.css"
 
-function Card({currentSong}){
+function Card({songs, currentSongIndex}){
     return (
-        <section className="current-music">
+        <section className="card">
             <h2 className="a11y-hidden">Current Music</h2>
-            <img src={process.env.PUBLIC_URL + currentSong.image} alt='Divide' className="album-img"></img>
-            <h3>{currentSong.song}</h3>
-            <p>{currentSong.artist}</p>
+            <img src={process.env.PUBLIC_URL + songs[currentSongIndex].image} alt='Divide' className="album-img"></img>
+            <h3>{songs[currentSongIndex].song}</h3>
+            <p>{songs[currentSongIndex].artist}</p>
         </section>
     )
 }

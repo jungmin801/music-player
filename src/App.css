@@ -1,22 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
 
-.App{
+.bg{
     height: 100vh;
     position: relative;
-
-    background-image: url(../public/img/edsheeran.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
-
 
     font-family: 'Roboto', sans-serif;
 
 }
 
 
-.App::before{
+.bg::before{
     content: '';
     background: rgba(70, 70, 70, 0.30);
     backdrop-filter: blur(15px);

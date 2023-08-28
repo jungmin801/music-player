@@ -45,7 +45,7 @@ footer{
 }
 
 
-.btn-play-group .btn.reset{
+.btn-play-group .btn.replay{
     background-image: url(../../../public/icon/Restart.png);
 }
 
@@ -59,7 +59,7 @@ footer{
     background-size: 100% 100%;
 }
 
-.btn-utility-group .btn.restart{
+.btn-utility-group .btn.replay{
     background-image: url(../../../public/icon/Restart.png);
 }
 

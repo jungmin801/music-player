@@ -1,7 +1,12 @@
+import { useEffect } from "react";
 import objData from "../objData.json"
 import nowPlayingCSS from "./css/nowPlaying.css";
 
-function NowPlaying(){
+function NowPlaying({songs}){
+
+    //songs 배열이 변경될 때마다 재렌더링
+    useEffect(() => {}, [songs]); 
+
     return(
         <section className="nowPlaying-list">
             <div className="title">
@@ -10,7 +15,7 @@ function NowPlaying(){
             </div>
             <ol>
                 {
-                    objData.map((item,i) => {
+                    songs.map((item,i) => {
                         return(
                             <li key={i+1}>
                                 <span>{`${i+1}.`}</span>

@@ -17,6 +17,7 @@ function Player({songs, setSongs, currentSongIndex, setCurrentSongIndex, isPlayi
   const [currentTime, setCurrentTime] = useState(0);
   const [totalDuration, setTotalDuration] = useState(0); 
   const [isShuffle, setIsShuffled] = useState(0);
+  const [range, setRange] = useState(0);
 
   // isPlaying 상태 변경
   const handlePlay = () => {
@@ -87,6 +88,7 @@ function Player({songs, setSongs, currentSongIndex, setCurrentSongIndex, isPlayi
   const handleTimeUpdate = () => {
     if (audioEl.current) {
       setCurrentTime(audioEl.current.currentTime);
+      calcRange();
     }
   };
 
@@ -96,6 +98,15 @@ function Player({songs, setSongs, currentSongIndex, setCurrentSongIndex, isPlayi
     const sec = Math.floor( time % 60 );
     return `${min} : ${sec < 10 ? '0' :''}${sec}`;
   }
+
+  // 재생바 range 계산하기
+  const calcRange = ()=>{
+    if(totalDuration > 0) {
+      let calc = parseFloat(currentTime / totalDuration * 100);
+      setRange(calc);
+    }
+  }
+
 
   return (
     <footer>
@@ -114,7 +125,7 @@ function Player({songs, setSongs, currentSongIndex, setCurrentSongIndex, isPlayi
         ></button>
         <button
           type="button"
-          className="btn play"
+          className={`btn ${isPlaying? "pause" : "play"}`}
           aria-label="재생"
           onClick={handlePlay}
         ></button>
@@ -127,7 +138,11 @@ function Player({songs, setSongs, currentSongIndex, setCurrentSongIndex, isPlayi
       </div>
       <div className="timeline">
         <p>{formatTime(totalDuration - currentTime)}</p>
-        <div className="progress-bg"></div>
+        <progress 
+        className="progress-bg"
+        value={range}
+        max={100}
+        ></progress>
       </div>
       <div className="btn-utility-group">
         <button

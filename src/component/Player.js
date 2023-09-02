@@ -1,5 +1,6 @@
 import { useEffect, useState, useRef } from "react";
 import playerCSS from "./css/player.css";
+import VolumeModal from "./Modal";
 
 // 랜덤하게 셔플하는 함수
 function shuffleArray(array) {
@@ -18,6 +19,8 @@ function Player({songs, setSongs, currentSongIndex, setCurrentSongIndex, isPlayi
   const [totalDuration, setTotalDuration] = useState(0); 
   const [isShuffle, setIsShuffled] = useState(0);
   const [range, setRange] = useState(0);
+  const [isClicked, setIsClicked] = useState(false);
+  const [volume, setVolume] = useState(0.5);
 
   // isPlaying 상태 변경
   const handlePlay = () => {
@@ -107,13 +110,28 @@ function Player({songs, setSongs, currentSongIndex, setCurrentSongIndex, isPlayi
     }
   }
 
+  // 볼륨바 보여주기
+  const showVolumeBar = ()=>{
+    if(!isClicked) {
+      setIsClicked(true);
+    } else {
+      setIsClicked(false);
+    }
+  }
+
+  // 볼륨 제어하기
+  useEffect(()=>{
+    if(audioEl){
+      audioEl.current.volume = volume
+    }
+  },[volume])
 
   return (
     <footer>
       <audio
         src={process.env.PUBLIC_URL + songs[currentSongIndex].audio}
         ref={audioEl}
-        volume='0.7'
+        volume={volume}
         onTimeUpdate={handleTimeUpdate} // 재생시간이 업데이트 될때마다 handleTimeUpdate 함수호출
       ></audio>
       <div className="btn-play-group">
@@ -160,7 +178,13 @@ function Player({songs, setSongs, currentSongIndex, setCurrentSongIndex, isPlayi
         <button 
           type="button" 
           className="btn volume" 
-          aria-label="볼륨"></button>
+          aria-label="볼륨"
+          onClick={showVolumeBar}>
+            {
+              isClicked ? <VolumeModal volume={volume} setVolume={setVolume}/> : ''
+            }
+            
+          </button>
       </div>
     </footer>
   );

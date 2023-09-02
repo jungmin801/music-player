@@ -1,5 +1,9 @@
 /* player */
 
+input{
+    margin:0;
+}
+
 :root{
     /* color */
     --bg: #090424;
@@ -61,6 +65,7 @@ footer{
 
 .btn.volume{
     background-image: url(../../../public/icon/Speaker.png);
+    position: relative;
 }
 
 .timeline p {
@@ -75,6 +80,7 @@ footer{
     height: 4px;
     appearance: none;
     transition: all 0.5s;
+    vertical-align: middle;
 }
 
 

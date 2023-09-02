@@ -2,10 +2,10 @@ import modalCSS from "./css/modal.css";
 
 function VolumeModal({ volume, setVolume }) {
   return (
-    <div className="volume-bar-bg">
+    <div className="volume-slider-bg">
       <input
         type="range"
-        className="volume-bar"
+        className="volume-slider"
         min="0"
         max="100"
         value={volume * 100}

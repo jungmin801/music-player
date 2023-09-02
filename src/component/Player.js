@@ -18,9 +18,8 @@ function Player({songs, setSongs, currentSongIndex, setCurrentSongIndex, isPlayi
   const [currentTime, setCurrentTime] = useState(0);
   const [totalDuration, setTotalDuration] = useState(0); 
   const [isShuffle, setIsShuffled] = useState(0);
-  const [range, setRange] = useState(0);
-  const [isClicked, setIsClicked] = useState(false);
-  const [volume, setVolume] = useState(0.5);
+  const [isVolumeClicked, setIsVolumeClicked] = useState(false);
+  const [volume, setVolume] = useState(0.3);
 
   // isPlaying 상태 변경
   const handlePlay = () => {
@@ -91,7 +90,6 @@ function Player({songs, setSongs, currentSongIndex, setCurrentSongIndex, isPlayi
   const handleTimeUpdate = () => {
     if (audioEl.current) {
       setCurrentTime(audioEl.current.currentTime);
-      calcRange();
     }
   };
 
@@ -101,21 +99,12 @@ function Player({songs, setSongs, currentSongIndex, setCurrentSongIndex, isPlayi
     const sec = Math.floor( time % 60 );
     return `${min} : ${sec < 10 ? '0' :''}${sec}`;
   }
-
-  // 재생바 range 계산하기
-  const calcRange = ()=>{
-    if(totalDuration > 0) {
-      let calc = parseFloat(currentTime / totalDuration * 100);
-      setRange(calc);
-    }
-  }
-
   // 볼륨바 보여주기
   const showVolumeBar = ()=>{
-    if(!isClicked) {
-      setIsClicked(true);
+    if(!isVolumeClicked) {
+      setIsVolumeClicked(true);
     } else {
-      setIsClicked(false);
+      setIsVolumeClicked(false);
     }
   }
 
@@ -156,11 +145,18 @@ function Player({songs, setSongs, currentSongIndex, setCurrentSongIndex, isPlayi
       </div>
       <div className="timeline">
         <p>{formatTime(totalDuration - currentTime)}</p>
-        <progress 
+        <input 
+        type="range"
         className="progress-bg"
-        value={range}
-        max={100}
-        ></progress>
+        value={currentTime}
+        min="0"
+        max={totalDuration}
+        onChange={(e)=>{
+          if(audioEl){
+            audioEl.current.currentTime = e.target.value;
+          }
+        }}
+        ></input>
       </div>
       <div className="btn-utility-group">
         <button
@@ -181,7 +177,7 @@ function Player({songs, setSongs, currentSongIndex, setCurrentSongIndex, isPlayi
           aria-label="볼륨"
           onClick={showVolumeBar}>
             {
-              isClicked ? <VolumeModal volume={volume} setVolume={setVolume}/> : ''
+              isVolumeClicked ? <VolumeModal volume={volume} setVolume={setVolume}/> : ''
             }
             
           </button>

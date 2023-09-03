@@ -7,7 +7,7 @@ function NowPlaying({songs}){
     //songs 배열이 변경될 때마다 재렌더링
     useEffect(() => {}, [songs]); 
 
-    return(
+    return(        
         <section className="nowPlaying-list">
             <div className="title">
                 <h2>Now Playing</h2>

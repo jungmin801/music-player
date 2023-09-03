@@ -54,18 +54,18 @@ body {
 article {
   min-width: max-content;
   position: absolute;
+  display: flex;
+  justify-content: center;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  gap: 84px;
+  gap: 5em;
 }
 
 /* NowPlaying style */
 
 .nowPlaying-list{
-  display: inline-block;
-  width: 450px;
-  vertical-align: top;
+  max-width: max-content;
 }
 
 .title{

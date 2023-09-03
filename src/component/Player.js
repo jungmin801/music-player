@@ -79,7 +79,7 @@ function Player({songs, setSongs, currentSongIndex, setCurrentSongIndex, isPlayi
  
   // 음원의 총 길이 가져오기
   const checkDuration = ()=>{
-    if (audioEl.current) {
+    if (audioEl) {
       audioEl.current.load(); // 새로운 음원을 로드하여 메타데이터를 업데이트합니다.
       audioEl.current.onloadedmetadata = () => {
         setTotalDuration(audioEl.current.duration);
@@ -88,7 +88,7 @@ function Player({songs, setSongs, currentSongIndex, setCurrentSongIndex, isPlayi
   }
   // 현재 재생중인 시간을 매초마다 업데이트
   const handleTimeUpdate = () => {
-    if (audioEl.current) {
+    if (audioEl) {
       setCurrentTime(audioEl.current.currentTime);
     }
   };
@@ -114,6 +114,12 @@ function Player({songs, setSongs, currentSongIndex, setCurrentSongIndex, isPlayi
       audioEl.current.volume = volume
     }
   },[volume])
+
+  // 타임라인 input range 스타일
+  const timelineBackground = {
+    background: `linear-gradient(to right, #FF0060 ${(currentTime / totalDuration) * 100}%, #fff 3%)`,
+    // transition: 'background 0.1s ease-in'
+  };
 
   return (
     <footer>
@@ -151,6 +157,8 @@ function Player({songs, setSongs, currentSongIndex, setCurrentSongIndex, isPlayi
         value={currentTime}
         min="0"
         max={totalDuration}
+        step={0.1}
+        style={timelineBackground}
         onChange={(e)=>{
           if(audioEl){
             audioEl.current.currentTime = e.target.value;

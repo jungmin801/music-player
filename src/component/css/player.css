@@ -80,4 +80,5 @@ footer{
     height: 4px;
     transition: all 0.5s;
     vertical-align: middle;
+    border-radius: 10px;
 }

@@ -17,9 +17,10 @@ function NowPlaying({songs}){
                 {
                     songs.map((item,i) => {
                         return(
-                            <li key={i+1}>
+                            <li key={i+1} style={{whiteSpace:'nowrap', textOverflow:'ellipsis', overflow:'hidden'}}>
                                 <span>{`${i+1}.`}</span>
-                                {`${item.song} - ${item.artist}`}</li>
+                                <span >{`${item.song} - ${item.artist}`}</span>
+                            </li>
                         )
                     })
                 }

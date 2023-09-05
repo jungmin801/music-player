@@ -35,6 +35,7 @@ body {
   --white: white;
   --pink: #FF0060;
 }
+/* 말줄임 */
 
 
 /* 숨기기 */
@@ -52,20 +53,28 @@ body {
 /* style 적용 */
 
 article {
-  min-width: max-content;
+  max-width: 80%;
+  max-height: 340px;
+
   position: absolute;
-  display: flex;
-  justify-content: center;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  gap: 5em;
+
+  
+  display: flex;
+  justify-content: center;
+  gap: 10%;
+  
 }
 
 /* NowPlaying style */
 
 .nowPlaying-list{
-  max-width: max-content;
+  max-width: 70%;
+  padding: 10px;
+  overflow: auto;
+  box-sizing: border-box;
 }
 
 .title{
@@ -103,6 +112,10 @@ article {
   cursor: pointer;
 }
 
-ol > li{
+.nowPlaying-list ol > li{
   margin-bottom: 24px;
+}
+
+.nowPlaying-list ol > li > span{
+  margin-right: 10px;
 }

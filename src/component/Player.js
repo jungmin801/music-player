@@ -1,16 +1,58 @@
 import { useEffect, useState, useRef } from "react";
-import playerCSS from "./css/player.css";
+import "./css/player.css";
 import VolumeModal from "./Modal";
 
-// 랜덤하게 셔플하는 함수
-function shuffleArray(array) {
-  const shuffledArray = [...array];
-  for (let i = shuffledArray.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [shuffledArray[i], shuffledArray[j]] = [shuffledArray[j], shuffledArray[i]];
-    console.log(i, j);
-  }
-  return shuffledArray;
+
+
+//오디오 컴포넌트
+function Audio({ audioEl, songIndex, volume, onTimeUpdate, onEnded }) {
+  return (
+    <audio
+      src={process.env.PUBLIC_URL + songIndex.audio}
+      ref={audioEl}
+      volume={volume}
+      onEnded={onEnded}
+      onTimeUpdate={onTimeUpdate}
+    ></audio>
+  );
+}
+
+// 버튼 컴포넌트
+function Button({ label, className, onClick }) {
+  return (
+    <button
+      type="button"
+      className={`btn ${className}`}
+      aria-label={label}
+      onClick={onClick}
+    ></button>
+  );
+}
+
+// 타임라인 컴포넌트
+function Timeline({ currentTime, totalDuration, formatTime, onChange }) {
+  // 타임라인 input range 스타일
+  const timelineBackground = {
+    background: `linear-gradient(to right, #FF0060 ${
+      (currentTime / totalDuration) * 100
+    }%, #fff 3%)`,
+  };
+
+  return (
+    <div className="timeline">
+      <p>{formatTime(totalDuration - currentTime)}</p>
+      <input
+        type="range"
+        className="progress-bg"
+        value={currentTime}
+        min="0"
+        max={totalDuration}
+        step={0.1}
+        style={timelineBackground}
+        onChange={onChange}
+      ></input>
+    </div>
+  );
 }
 
 function Player({
@@ -65,6 +107,16 @@ function Player({
     }
   };
 
+  // 랜덤하게 셔플하는 함수
+  const shuffleArray = (array) => {
+    const shuffledArray = [...array];
+    for (let i = shuffledArray.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffledArray[i], shuffledArray[j]] = [shuffledArray[j], shuffledArray[i]];
+    }
+    return shuffledArray;
+  }
+
   // 랜덤 셔플 후 songs 배열 업데이트
   const shuffleSongs = () => {
     setIsShuffled(isShuffle + 1);
@@ -104,6 +156,7 @@ function Player({
     const sec = Math.floor(time % 60);
     return `${min} : ${sec < 10 ? "0" : ""}${sec}`;
   };
+
   // 볼륨바 보여주기
   const showVolumeBar = () => {
     if (!isVolumeClicked) {
@@ -120,20 +173,13 @@ function Player({
     }
   }, [volume]);
 
-  // 타임라인 input range 스타일
-  const timelineBackground = {
-    background: `linear-gradient(to right, #FF0060 ${
-      (currentTime / totalDuration) * 100
-    }%, #fff 3%)`,
-    // transition: 'background 0.1s ease-in'
-  };
-
   return (
     <footer>
-      <audio
-        src={process.env.PUBLIC_URL + songs[currentSongIndex].audio}
-        ref={audioEl}
+      <Audio
+        audioEl={audioEl}
+        songIndex={songs[currentSongIndex]}
         volume={volume}
+        onTimeUpdate={handleTimeUpdate} // 재생시간이 업데이트 될때마다 handleTimeUpdate 함수호출
         onEnded={() => {
           if (currentSongIndex === songs.length - 1) {
             setCurrentSongIndex(0);
@@ -141,70 +187,51 @@ function Player({
             setCurrentSongIndex(currentSongIndex + 1);
           }
         }}
-        onTimeUpdate={handleTimeUpdate} // 재생시간이 업데이트 될때마다 handleTimeUpdate 함수호출
-      ></audio>
+      />
       <div className="btn-play-group">
-        <button
-          type="button"
-          className="btn backward"
-          aria-label="이전 곡"
-          onClick={playPrevSong}
-        ></button>
-        <button
-          type="button"
-          className={`btn ${isPlaying ? "pause" : "play"}`}
+        <Button className="backward" label="이전 곡" onClick={playPrevSong} />
+        <Button
+          className={`${isPlaying ? "pause" : "play"}`}
           aria-label="재생"
           onClick={handlePlay}
-        ></button>
-        <button
-          type="button"
-          className="btn forward"
+        />
+        <Button
+          className="forward"
           aria-label="다음 곡"
           onClick={playNextSong}
-        ></button>
+        />
       </div>
-      <div className="timeline">
-        <p>{formatTime(totalDuration - currentTime)}</p>
-        <input
-          type="range"
-          className="progress-bg"
-          value={currentTime}
-          min="0"
-          max={totalDuration}
-          step={0.1}
-          style={timelineBackground}
-          onChange={(e) => {
-            if (audioEl) {
-              audioEl.current.currentTime = e.target.value;
-            }
-          }}
-        ></input>
-      </div>
+      <Timeline
+        currentTime={currentTime}
+        totalDuration={totalDuration}
+        formatTime={formatTime}
+        onChange={(e) => {
+          if (audioEl) {
+            audioEl.current.currentTime = e.target.value;
+          }
+        }}
+      />
       <div className="btn-utility-group">
-        <button
-          type="button"
-          className="btn replay"
-          aria-label="다시 재생"
-          onClick={replaySong}
-        ></button>
-        <button
-          type="button"
-          className="btn shuffle"
-          aria-label="셔플"
-          onClick={shuffleSongs}
-        ></button>
-        <button
-          type="button"
-          className="btn volume"
-          aria-label="볼륨"
-          onClick={showVolumeBar}
-        >
-          {isVolumeClicked ? (
-            <VolumeModal volume={volume} setVolume={setVolume} />
-          ) : (
-            ""
-          )}
-        </button>
+        <div>
+          <Button
+            className="replay"
+            aria-label="다시 재생"
+            onClick={replaySong}
+          />
+          <Button className="shuffle" aria-label="셔플" onClick={shuffleSongs} />
+          <button
+            type="button"
+            className="btn volume"
+            aria-label="볼륨"
+            onClick={showVolumeBar}
+          >
+            {isVolumeClicked ? (
+              <VolumeModal volume={volume} setVolume={setVolume} />
+            ) : (
+              ""
+            )}
+          </button>
+        </div>
       </div>
     </footer>
   );

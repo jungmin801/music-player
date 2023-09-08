@@ -1,7 +1,8 @@
 import Card from "./component/Card";
 import NowPlaying from "./component/NowPlaying";
 import Player from "./component/Player";
-import AppCSS from "./App.css"
+import "./App.css"
+import "./component/css/reset.css"
 import { useState } from "react";
 import objData from "./objData.json"
 
@@ -28,7 +29,7 @@ function App() {
                 setCurrentSongIndex={setCurrentSongIndex} 
                 isPlaying={isPlaying} 
                 setIsPlaying={setIsPlaying}
-                />
+        />
       </div>          
     </div>
   );

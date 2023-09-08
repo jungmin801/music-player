@@ -1,0 +1,37 @@
+/* reset */
+body{
+    margin:0;
+  }
+  
+  h2,
+  h3,
+  p {
+    margin: 0;
+    padding: 0;
+    font-size: inherit;
+    font-weight: inherit;
+  }
+  
+  ol,
+  li{
+    margin: 0;
+    list-style: none;
+    padding: 0;
+  }
+  
+  button{
+    background-color: transparent;
+    border: none;
+    outline: none;
+  }
+  
+  body {
+    background-color: #eee;
+    color: var(--white)
+  }
+
+  /**/
+  :root{
+    --white: #fff;
+    --pink: #FF0060;
+  }

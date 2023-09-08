@@ -20,9 +20,16 @@ footer{
 
     position: absolute;
     bottom: 0;
-    gap: 50px;
+    gap: 3em;
     padding:0 5%;
 }
+
+.btn-utility-group > div{
+    display: flex;
+    gap: 0.5em;
+}
+
+
 .btn-play-group,
 .btn-utility-group{
     display: inline-flex;
@@ -72,6 +79,7 @@ footer{
     position: relative;
 }
 
+
 .timeline{
     display: inline-flex;
     align-items: center;
@@ -87,4 +95,80 @@ footer{
     height: 4px;
     transition: all 0.5s;
     border-radius: 10px;
+}
+
+@media screen and (max-width: 767px){
+
+    footer{
+        width: 100vw;
+        justify-content: center;
+        gap:10px;
+    }
+
+    .btn{
+        width: 32px;
+        height: 32px;
+    }
+}
+
+@media screen and (max-width: 480px){
+
+    footer{
+        padding: 0;
+    }
+
+    .btn-play-group{
+        position: absolute;
+        top: -150%;
+        gap: 1em;
+    }
+
+    .btn-play-group > .btn{
+        width: 60px;
+        height: 60px;
+    }
+
+    .btn.play{
+        flex-grow: 1;
+    }
+    
+    .btn-utility-group{
+        justify-content: center;
+    }
+
+    .btn-utility-group > div{
+        gap: 2em;
+        justify-content: space-around;
+    }
+
+    .btn.forward,
+    .btn.backward{
+        width: 32px;
+        height: 28px;
+    }
+
+    
+
+    .timeline{
+        position: fixed;
+        bottom: 27%;
+        flex-direction: column-reverse;
+        min-width: 60%;
+    }
+
+    .timeline .progress-bg{
+        width: 100%;
+    }
+
+    .timeline p{
+        padding:0.5em 0 0 0;
+        align-self: flex-end;
+    }
+
+    
+    .btn.list{
+        display: inline-block;
+        background-image: url(../../../public/icon/Speaker.png);
+        position: relative;
+    }
 }

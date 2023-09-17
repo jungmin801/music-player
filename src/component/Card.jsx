@@ -1,5 +1,38 @@
 import "./css/card.css"
 import { useState, useEffect, useRef } from 'react';
+import styled from 'styled-components';
+
+const CardSection = styled.section`
+    box-sizing: border-box;
+  width: 280px;
+  height: 100%;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+`
+const CoverImg = styled.img`
+    aspect-ratio: 1 / 1;
+  border-radius: 30px;
+  box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.25);
+`
+
+const SongTitle = styled.h3`
+    text-align: center;
+  padding: 1rem 0 0.5rem 0;
+  font-family: Roboto;
+  font-size: 2.25em;
+  font-weight: 700;
+  white-space: nowrap;
+`
+
+const Artist = styled.p`
+    text-align: center;
+  font-family: Roboto;
+  font-size: 1.13em;
+  font-weight: 700;
+`
+
 
 function Card({songs, currentSongIndex}){
     const [scrollPosition, setScrollPosition] = useState(0);
@@ -31,16 +64,16 @@ function Card({songs, currentSongIndex}){
     },[currentSongIndex])
 
     return (
-        <section className="card" ref={cardEl}>
+        <CardSection className="card" ref={cardEl}>
             <h2 className="a11y-hidden">Current Music</h2>
-            <img src={process.env.PUBLIC_URL + songs[currentSongIndex].image} alt='' className="album-img"></img>
-            <h3
+            <CoverImg src={process.env.PUBLIC_URL + songs[currentSongIndex].image} alt='' className="album-img"/>
+            <SongTitle
             style={ {transform : `translateX(${scrollPosition}px)`} }
             >
                 <span ref={titleEl}>{songs[currentSongIndex].song}</span>
-            </h3>
-            <p>{songs[currentSongIndex].artist}</p>
-        </section>
+            </SongTitle>
+            <Artist>{songs[currentSongIndex].artist}</Artist>
+        </CardSection>
     )
 }
 export default Card

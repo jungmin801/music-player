@@ -38,22 +38,6 @@ footer{
     gap: 0.5em;
 }
 
-.timeline{
-    display: inline-flex;
-    align-items: center;
-    flex-grow: 1;
-}
-
-.timeline p {
-    padding-right: 1.2em;
-}
-
-.timeline .progress-bg{
-    flex-grow: 1;
-    height: 4px;
-    transition: all 0.5s;
-    border-radius: 10px;
-}
 
 @media screen and (max-width: 767px){
 

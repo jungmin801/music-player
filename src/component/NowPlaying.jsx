@@ -1,21 +1,7 @@
 import { useState, useEffect } from "react";
 import "./css/nowPlaying.css";
-import Button from "./Button.jsx";
 
-function RenderPlayList({ songs, isOpened }) {
-    return (
-    <ol className={isOpened ? "list-opened" : "hidden"}>
-        {songs.map((item, i) => {
-        return (
-            <li key={i + 1}>
-            <span>{`${i + 1}.`}</span>
-            <span>{`${item.song} - ${item.artist}`}</span>
-            </li>
-        );
-        })}
-    </ol>
-    );
-}
+
 
 function NowPlaying({ songs }) {
     const [isOpened, setIsOpened] = useState(true);
@@ -34,7 +20,7 @@ function NowPlaying({ songs }) {
         <h2>Now Playing</h2>
         <div className={`btn toggle`}></div>
         </button>
-        <RenderPlayList songs={songs} isOpened={isOpened} />
+        <PlayList songs={songs} isOpened={isOpened} />
     </section>
     );
 }

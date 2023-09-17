@@ -1,3 +1,17 @@
+import styled from 'styled-components';
+
+const TimelineWrapper = styled.div`
+    display: inline-flex;
+    align-items: center;
+    flex-grow: 1;
+`
+const TimelineBar =styled.input`
+    flex-grow: 1;
+    height: 4px;
+    transition: all 0.5s;
+    border-radius: 10px;
+`
+
 function Timeline({ currentTime, totalDuration, formatTime, onChange }) {
     // 타임라인 input range 스타일
     const timelineBackground = {
@@ -7,9 +21,9 @@ function Timeline({ currentTime, totalDuration, formatTime, onChange }) {
     };
   
     return (
-      <div className="timeline">
-        <p>{formatTime(totalDuration - currentTime)}</p>
-        <input
+      <TimelineWrapper className="timeline">
+        <p style={{paddingRight: "1.2em"}}>{formatTime(totalDuration - currentTime)}</p>
+        <TimelineBar
           type="range"
           className="progress-bg"
           value={currentTime}
@@ -18,8 +32,8 @@ function Timeline({ currentTime, totalDuration, formatTime, onChange }) {
           step={0.1}
           style={timelineBackground}
           onChange={onChange}
-        ></input>
-      </div>
+        ></TimelineBar>
+      </TimelineWrapper>
     );
   }
 

@@ -17,8 +17,8 @@ function Card({songs, currentSongIndex}){
                 setScrollPosition((prev) =>{
                     if(Math.abs(prev) >= titleWidth){
                         return cardWidth;
-                } else {
-                    return prev - 1}
+                    } else {
+                        return prev - 1}
                 })
             }, 80)
         }

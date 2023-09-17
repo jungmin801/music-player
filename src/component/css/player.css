@@ -38,48 +38,6 @@ footer{
     gap: 0.5em;
 }
 
-.btn{
-    width: 38px;
-    height: 38px;
-    
-    background-position: 0 0;
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-
-    cursor: pointer;
-}
-.btn.backward{
-    height: 28px;
-    background-image: url(../../../public/icon/btn_rewind.png);
-}
-.btn.forward{
-    height: 28px;
-    background-image: url(../../../public/icon/btn_forward.png);
-}
-
-.btn.play{
-    background-image: url(../../../public/icon/btn_play.png);
-}
-
-.btn.pause{
-    background-image: url(../../../public/icon/btn_pause.png);
-}
-
-
-.btn.replay{
-    background-image: url(../../../public/icon/Restart.png);
-}
-
-.btn.shuffle{
-    background-image: url(../../../public/icon/Shuffle.png);
-}
-
-.btn.volume{
-    background-image: url(../../../public/icon/Speaker.png);
-    position: relative;
-}
-
-
 .timeline{
     display: inline-flex;
     align-items: center;
@@ -168,7 +126,6 @@ footer{
     
     .btn.list{
         display: inline-block;
-        background-image: url(../../../public/icon/Speaker.png);
         position: relative;
     }
 }

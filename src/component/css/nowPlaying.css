@@ -67,10 +67,10 @@ article {
 .nowPlaying-list .toggle{
   width: 34px;
   height: 34px;
-  background-image: url(../../../public/icon/btn_list.png);
+  background-image: url(../../icon/list.png);
   background-position: 0 0 ;
   background-repeat: no-repeat;
-  background-size: 100% 100%px;
+  background-size: 100% 100%;
   margin-right: 10px;
   padding: 0;
 }

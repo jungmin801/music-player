@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import "./css/nowPlaying.css";
+import Button from "./Button.jsx";
 
 function RenderPlayList({ songs, isOpened }) {
     return (

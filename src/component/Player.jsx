@@ -1,59 +1,10 @@
 import { useEffect, useState, useRef } from "react";
 import "./css/player.css";
 import VolumeModal from "./Modal";
+import Audio from "./Audio.jsx";
+import Button from "./Button.jsx";
+import Timeline from "./Timeline.jsx";
 
-
-
-//오디오 컴포넌트
-function Audio({ audioEl, songIndex, volume, onTimeUpdate, onEnded }) {
-  return (
-    <audio
-      src={process.env.PUBLIC_URL + songIndex.audio}
-      ref={audioEl}
-      volume={volume}
-      onEnded={onEnded}
-      onTimeUpdate={onTimeUpdate}
-    ></audio>
-  );
-}
-
-// 버튼 컴포넌트
-function Button({ label, className, onClick }) {
-  return (
-    <button
-      type="button"
-      className={`btn ${className}`}
-      aria-label={label}
-      onClick={onClick}
-    ></button>
-  );
-}
-
-// 타임라인 컴포넌트
-function Timeline({ currentTime, totalDuration, formatTime, onChange }) {
-  // 타임라인 input range 스타일
-  const timelineBackground = {
-    background: `linear-gradient(to right, #FF0060 ${
-      (currentTime / totalDuration) * 100
-    }%, #fff 3%)`,
-  };
-
-  return (
-    <div className="timeline">
-      <p>{formatTime(totalDuration - currentTime)}</p>
-      <input
-        type="range"
-        className="progress-bg"
-        value={currentTime}
-        min="0"
-        max={totalDuration}
-        step={0.1}
-        style={timelineBackground}
-        onChange={onChange}
-      ></input>
-    </div>
-  );
-}
 
 function Player({
   songs,
@@ -73,11 +24,7 @@ function Player({
   // isPlaying 상태 변경
   const handlePlay = () => {
     checkDuration();
-    if (!isPlaying) {
-      setIsPlaying(true);
-    } else {
-      setIsPlaying(false);
-    }
+    setIsPlaying(!isPlaying);
   };
 
   // 플레이 버튼 클릭 시 재생, 일시정지
@@ -120,6 +67,7 @@ function Player({
   // 랜덤 셔플 후 songs 배열 업데이트
   const shuffleSongs = () => {
     setIsShuffled(isShuffle + 1);
+    
     const shuffledList = shuffleArray(songs);
     setSongs(shuffledList);
     setCurrentSongIndex(0); // 셔플 후 첫 번째 곡으로 설정
@@ -131,7 +79,7 @@ function Player({
     audioEl.current.currentTime = 0;
     setTimeout(() => {
       audioEl.current.play();
-    }, 200);
+    }, 500);
   };
 
   // 음원의 총 길이 가져오기
@@ -157,13 +105,14 @@ function Player({
     return `${min} : ${sec < 10 ? "0" : ""}${sec}`;
   };
 
-  // 볼륨바 보여주기
+  // 볼륨 조절 바 클릭 여부 제어
   const showVolumeBar = () => {
-    if (!isVolumeClicked) {
-      setIsVolumeClicked(true);
-    } else {
-      setIsVolumeClicked(false);
-    }
+    setIsVolumeClicked(!isVolumeClicked);
+    // if (!isVolumeClicked) {
+    //   setIsVolumeClicked(true);
+    // } else {
+    //   setIsVolumeClicked(false);
+    // }
   };
 
   // 볼륨 제어하기
@@ -219,18 +168,9 @@ function Player({
             onClick={replaySong}
           />
           <Button className="shuffle" aria-label="셔플" onClick={shuffleSongs} />
-          <button
-            type="button"
-            className="btn volume"
-            aria-label="볼륨"
-            onClick={showVolumeBar}
-          >
-            {isVolumeClicked ? (
-              <VolumeModal volume={volume} setVolume={setVolume} />
-            ) : (
-              ""
-            )}
-          </button>
+          <Button className="volume" aria-label="볼륨" onClick={showVolumeBar}>
+            { isVolumeClicked && <VolumeModal volume={volume} setVolume={setVolume}/> }
+          </Button>
         </div>
       </div>
     </footer>

@@ -30,8 +30,6 @@ body{
     color: var(--white)
   }
 
-  /**/
-  :root{
-    --white: #fff;
-    --pink: #FF0060;
+  input{
+    margin:0;
   }

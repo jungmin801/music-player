@@ -1,14 +1,5 @@
 /* player */
 
-input{
-    margin:0;
-}
-
-:root{
-    /* color */
-    --bg: #090424;
-}
-
 footer{
     box-sizing: border-box;
     width: 100%;
@@ -24,14 +15,10 @@ footer{
     padding:0 5%;
 }
 
-.btn-utility-group > div{
-    display: flex;
-    gap: 0.5em;
-}
 
-
-.btn-play-group,
-.btn-utility-group{
+.btnPlayGroup,
+.btnUtilityGroup{
+    position: relative;
     display: inline-flex;
     align-items: center;
     justify-content: space-between;
@@ -59,13 +46,13 @@ footer{
         padding: 0;
     }
 
-    .btn-play-group{
+    .btnPlayGroup{
         position: absolute;
         top: -150%;
         gap: 1em;
     }
 
-    .btn-play-group > .btn{
+    .btnPlayGroup > .btn{
         width: 60px;
         height: 60px;
     }
@@ -74,11 +61,11 @@ footer{
         flex-grow: 1;
     }
     
-    .btn-utility-group{
+    .btnUtilityGroup{
         justify-content: center;
     }
 
-    .btn-utility-group > div{
+    .btnUtilityGroup > div{
         gap: 2em;
         justify-content: space-around;
     }

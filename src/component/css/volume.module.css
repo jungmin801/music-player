@@ -1,0 +1,37 @@
+.volumeSliderBg{
+    width: 136px;
+    height: 40px;
+
+    transform: rotate(-90deg);
+    position: absolute;
+    bottom: 260%;
+    left: 33%;
+
+    background-color: var(--bg);
+    border-radius: 0 10px 10px 0;
+}
+
+.volumeSlider{
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    height: 6px;
+    border-radius: 10px;
+    margin-left: 3px;
+}
+
+
+@media screen and (max-width: 767px){
+    .volumeSliderBg{
+        bottom: 310%;
+        left: 25%;
+    }
+}
+
+@media screen and (max-width: 480px){
+    .volumeSliderBg{
+        bottom: 310%;
+        left: 50%;
+    }
+}

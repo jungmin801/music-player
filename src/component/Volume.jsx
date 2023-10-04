@@ -1,4 +1,4 @@
-import modalCSS from "./css/modal.css";
+import styles from "./css/volume.module.css";
 
 function VolumeModal({ volume, setVolume }) {
   const volumeBackground = {
@@ -6,10 +6,10 @@ function VolumeModal({ volume, setVolume }) {
   };
 
   return (
-    <div className="volume-slider-bg">
+    <div className={styles.volumeSliderBg}>
       <input
         type="range"
-        className="volume-slider"
+        className={styles.volumeSlider}
         min="0"
         max="100"
         value={volume * 100}

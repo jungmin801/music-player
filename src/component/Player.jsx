@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from "react";
-import "./css/player.css";
-import VolumeModal from "./Modal";
+import styles from"./css/player.module.css";
+import VolumeModal from "./Volume";
 import Audio from "./Audio.jsx";
 import Button from "./Button.jsx";
 import Timeline from "./Timeline.jsx";
@@ -14,6 +14,7 @@ function Player({
   isPlaying,
   setIsPlaying,
 }) {
+
   const audioEl = useRef(null);
   const [currentTime, setCurrentTime] = useState(0);
   const [totalDuration, setTotalDuration] = useState(0);
@@ -108,11 +109,6 @@ function Player({
   // 볼륨 조절 바 클릭 여부 제어
   const showVolumeBar = () => {
     setIsVolumeClicked(!isVolumeClicked);
-    // if (!isVolumeClicked) {
-    //   setIsVolumeClicked(true);
-    // } else {
-    //   setIsVolumeClicked(false);
-    // }
   };
 
   // 볼륨 제어하기
@@ -137,7 +133,7 @@ function Player({
           }
         }}
       />
-      <div className="btn-play-group">
+      <div className={styles.btnPlayGroup}>
         <Button className="backward" label="이전 곡" onClick={playPrevSong} />
         <Button
           className={`${isPlaying ? "pause" : "play"}`}
@@ -160,18 +156,15 @@ function Player({
           }
         }}
       />
-      <div className="btn-utility-group">
-        <div>
+      <div className={styles.btnUtilityGroup}>
           <Button
             className="replay"
             aria-label="다시 재생"
             onClick={replaySong}
           />
           <Button className="shuffle" aria-label="셔플" onClick={shuffleSongs} />
-          <Button className="volume" aria-label="볼륨" onClick={showVolumeBar}>
-            { isVolumeClicked && <VolumeModal volume={volume} setVolume={setVolume}/> }
-          </Button>
-        </div>
+          <Button className="volume" aria-label="볼륨" onClick={showVolumeBar} />
+          { isVolumeClicked && <VolumeModal volume={volume} setVolume={setVolume}/>}
       </div>
     </footer>
   );

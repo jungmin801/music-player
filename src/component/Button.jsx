@@ -9,7 +9,7 @@ import speakerImg from '../icon/speaker.png';
 
 
 // Define a base button component
-const BaseButton = styled.button`
+export const BaseButton = styled.button`
   width: 38px;
   height: 38px;
   background-position: 0 0;

@@ -1,20 +1,8 @@
 @import url(./reset.css);
 
-/* 숨기기 */
-.a11y-hidden {
-  clip: rect(1px, 1px, 1px, 1px);
-  clip-path: inset(50%);
-  width: 1px;
-  height: 1px;
-  margin: -1px;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-}
-
 /* style 적용 */
 
-/* article {
+article {
   width:80%;
   position: absolute;
   top: 50%;
@@ -26,18 +14,18 @@
   justify-content: center;
   gap: 10%;
   
-} */
+}
 
 /* NowPlaying style */
 
-.nowPlaying-list{
+.nowPlayingList{
   width: 50%;
   padding: 10px;
   overflow: auto;
   box-sizing: border-box;
 }
 
-.title{
+.titleBtn{
   display: flex;
   flex-direction: row-reverse;
   justify-content: flex-end;
@@ -46,15 +34,18 @@
   padding:0;
 }
 
-.nowPlaying-list h2 {
+.titleBtn:hover{
+  cursor: pointer;
+}
+
+.nowPlayingList h2 {
   color: var(--white);
   font-family: Roboto;
   font-size: 36px;
   font-weight: 700;
-
 }
 
-.nowPlaying-list li{
+.nowPlayingList li{
   color: var(--white);
   font-family: Roboto;
   font-size: 18px;
@@ -62,39 +53,18 @@
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
-}
-
-.nowPlaying-list .toggle{
-  width: 34px;
-  height: 34px;
-  background-image: url(../../icon/list.png);
-  background-position: 0 0 ;
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
-  margin-right: 10px;
-  padding: 0;
-}
-
-.nowPlaying-list button:hover{
-  cursor: pointer;
-}
-
-.nowPlaying-list ol > li{
   margin-bottom: 24px;
 }
 
-.nowPlaying-list ol > li > span{
-  margin-right: 10px;
-}
 
-.nowPlaying-list ol.hidden{
+.nowPlayingList ol.hidden{
   max-height:0;
   overflow: hidden;
 }
 
-.nowPlaying-list ol.list-opened{
+.nowPlayingList ol.listOpened{
   max-height: 40%; 
-  transition: max-height 0.3s; /* 애니메이션 설정 */
+  transition: max-height 0.3s;
   overflow: hidden;
 }
 
@@ -105,23 +75,23 @@
     gap: 0;
   }
 
-  .nowPlaying-list{
+  .nowPlayingList{
     width: 100%;
     height: 250px;
   }
 
-  .nowPlaying-list .title{
+  .nowPlayingList .titleBtn{
     width: 100%;
     justify-content: center;
     margin: 20px 0;
   }
 
-  .nowPlaying-list .title > h2{
+  .nowPlayingList .titleBtn > h2{
     font-size: 26px;
   }
 
 
-  .nowPlaying-list ol > li{
+  .nowPlayingList ol > li{
     text-align: center;
     margin-bottom: 14px;
   }
@@ -134,14 +104,14 @@
     height: 100vh;
   }
 
-  .nowPlaying-list{
+  .nowPlayingList{
     position: absolute;
     top:0;
     padding:0;
     height: 40%;
   }
 
-  .nowPlaying-list .title{
+  .nowPlayingList .titleBtn{
     width: 100%;
     justify-content: center;
     background-color: rgba(0,0,0,0.5);
@@ -150,26 +120,26 @@
     margin: 0;
   }
 
-  .nowPlaying-list .title > h2{
+  .nowPlayingList .titleBtn > h2{
     font-size: 14px;
   }
 
-  .nowPlaying-list ol > li{
+  .nowPlayingList ol > li{
     text-align: left;
     margin-bottom: 1em;
   }
 
-  .nowPlaying-list .title .toggle{
+  .nowPlayingList .titleBtn .toggle{
     width: 20px;
     height: 20px;
   }
 
-  .nowPlaying-list.active{
+  .nowPlayingList.active{
     background-color: rgba(0,0,0,0.6);
     border-radius: 0 0 10px 10px;
   }
 
-  .nowPlaying-list ol.list-opened{
+  .nowPlayingList ol.listOpened{
     padding: 15px 10px;
     box-sizing: border-box;
   }

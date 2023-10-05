@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
-
+@import url(./reset.css);
 
 /* 숨기기 */
 .a11y-hidden {
@@ -21,6 +21,12 @@
     --bg: #090424;
   }
 
+/* body style */
+body{
+  font-family: 'Roboto', sans-serif;
+}
+
+/* 배경이미지 */
 .bg{
     height: 100vh;
     position: relative;
@@ -32,7 +38,6 @@
 
 }
 
-
 .bg::before{
     content: '';
     background: rgba(70, 70, 70, 0.30);
@@ -43,28 +48,14 @@
 }
 
 
-article {
-    width:80%;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  
-    
-    display: flex;
-    justify-content: center;
-    gap: 10%;
-    
-  }
+/* 타임라인, 볼륨바 커스텀 스타일 */
+input[type='range'] {
+  -webkit-appearance: none;
+  appearance: none;
+}
 
-
-  input[type='range'] {
-    -webkit-appearance: none;
-    appearance: none;
- }
-
- input[type='range']:focus {
-    outline: none;
+input[type='range']:focus {
+  outline: none;
 }
 
 input[type='range']::-webkit-slider-runnable-track {

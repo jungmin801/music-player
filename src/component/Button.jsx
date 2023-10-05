@@ -16,25 +16,48 @@ export const BaseButton = styled.button`
   background-repeat: no-repeat;
   background-size: 100% 100%;
   cursor: pointer;
+
+  @media screen and (max-width: 767px){
+    width: 32px;
+    height: 32px;
+  }
 `;
 
 // Extend the base button component for specific button types
 const BackwardButton = styled(BaseButton)`
   height: 28px;
   background-image: url(${backwardImg});
+  @media screen and (max-width: 480px){
+    width: 40px;
+    height: 36px;
+  }
 `;
 
 const ForwardButton = styled(BaseButton)`
   height: 28px;
   background-image: url(${forwardImg});
+  @media screen and (max-width: 480px){
+    width: 40px;
+    height: 36px;
+  }
 `;
 
 const PlayButton = styled(BaseButton)`
   background-image: url(${playImg});
+  @media screen and (max-width: 480px){
+    width: 60px;
+    height: 60px;
+    flex-grow: 1;
+  }
 `;
 
 const PauseButton = styled(BaseButton)`
   background-image: url(${pauseImg});
+  @media screen and (max-width: 480px){
+    width: 60px;
+    height: 60px;
+    flex-grow: 1;
+  }
 `;
 
 const ReplayButton = styled(BaseButton)`

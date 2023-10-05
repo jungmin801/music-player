@@ -1,8 +1,8 @@
 import Card from "./component/Card";
 import NowPlaying from "./component/NowPlaying";
 import Player from "./component/Player";
+import "./reset.css"
 import "./App.css"
-import "./component/css/reset.css"
 import { useState } from "react";
 import objData from "./objData.json"
 

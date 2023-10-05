@@ -1,5 +1,3 @@
-/* player */
-
 footer{
     box-sizing: border-box;
     width: 100%;
@@ -33,11 +31,6 @@ footer{
         justify-content: center;
         gap:10px;
     }
-
-    .btn{
-        width: 32px;
-        height: 32px;
-    }
 }
 
 @media screen and (max-width: 480px){
@@ -52,51 +45,8 @@ footer{
         gap: 1em;
     }
 
-    .btnPlayGroup > .btn{
-        width: 60px;
-        height: 60px;
-    }
-
-    .btn.play{
-        flex-grow: 1;
-    }
-    
     .btnUtilityGroup{
-        justify-content: center;
-    }
-
-    .btnUtilityGroup > div{
-        gap: 2em;
+        gap: 1em;
         justify-content: space-around;
-    }
-
-    .btn.forward,
-    .btn.backward{
-        width: 32px;
-        height: 28px;
-    }
-
-    
-
-    .timeline{
-        position: fixed;
-        bottom: 27%;
-        flex-direction: column-reverse;
-        min-width: 60%;
-    }
-
-    .timeline .progress-bg{
-        width: 100%;
-    }
-
-    .timeline p{
-        padding:0.5em 0 0 0;
-        align-self: flex-end;
-    }
-
-    
-    .btn.list{
-        display: inline-block;
-        position: relative;
     }
 }

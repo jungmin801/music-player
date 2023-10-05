@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import styles from "./css/nowPlaying.module.css";
-import { BaseButton } from "./Button";
 import styled from "styled-components";
+import { BaseButton } from "./Button";
 import toggleImg from "../icon/list.png"
 
 const ToggleBtn = styled(BaseButton)`
@@ -13,6 +13,11 @@ const ToggleBtn = styled(BaseButton)`
     background-size: 100% 100%;
     margin-right: 10px;
     padding: 0;
+
+    @media screen and (max-width: 480px){
+        display: inline-block;
+        position: relative;
+    }
 `
 
 function PlayList({ songs, isOpened }) {
@@ -43,10 +48,10 @@ function NowPlaying({ songs }) {
 
     return (
     <section className={`${styles.nowPlayingList} ${isOpened ? styles.active : ''}`}>
-        <button type="button" className={styles.titleBtn} onClick={handleToggle}>
+        <div type="button" className={styles.titleBtn} onClick={handleToggle}>
             <h2>Now Playing</h2>
             <ToggleBtn></ToggleBtn>
-        </button>
+        </div>
         <PlayList songs={songs} isOpened={isOpened} />
     </section>
     );

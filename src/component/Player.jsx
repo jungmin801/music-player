@@ -101,13 +101,6 @@ function Player({
     }
   };
 
-  // 남은 시간을 분:초로 보여주기
-  const formatTime = (time) => {
-    const min = Math.floor(time / 60);
-    const sec = Math.floor(time % 60);
-    return `${min} : ${sec < 10 ? "0" : ""}${sec}`;
-  };
-
   // 볼륨 조절 바 클릭 여부 제어
   const showVolumeBar = () => {
     setIsVolumeClicked(!isVolumeClicked);
@@ -151,7 +144,6 @@ function Player({
       <Timeline
         currentTime={currentTime}
         totalDuration={totalDuration}
-        formatTime={formatTime}
         onChange={(e) => {
           if (audioEl) {
             audioEl.current.currentTime = e.target.value;

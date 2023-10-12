@@ -22,9 +22,19 @@ function Player({
   const [isVolumeClicked, setIsVolumeClicked] = useState(false);
   const [volume, setVolume] = useState(0.3);
 
+  
+  // 음원의 총 길이 가져오기
+  useEffect(()=>{
+      if (audioEl) {
+        audioEl.current.load(); // 새로운 음원을 로드하여 메타데이터를 업데이트합니다.
+        audioEl.current.onloadedmetadata = () => {
+          setTotalDuration(audioEl.current.duration);
+        };
+      }
+  }, [currentSongIndex])
+
   // isPlaying 상태 변경
   const handlePlay = () => {
-    checkDuration();
     setIsPlaying(!isPlaying);
   };
 
@@ -83,15 +93,7 @@ function Player({
     }, 500);
   };
 
-  // 음원의 총 길이 가져오기
-  const checkDuration = () => {
-    if (audioEl) {
-      audioEl.current.load(); // 새로운 음원을 로드하여 메타데이터를 업데이트합니다.
-      audioEl.current.onloadedmetadata = () => {
-        setTotalDuration(audioEl.current.duration);
-      };
-    }
-  };
+
   // 현재 재생중인 시간을 매초마다 업데이트
   const handleTimeUpdate = () => {
     if (audioEl) {

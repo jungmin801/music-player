@@ -1,70 +1,35 @@
-# Getting Started with Create React App
+# Music Web Player
+![메인화면](https://github.com/jungmin801/music-player/assets/130200440/e3f3d119-664b-40b7-9225-e973966e8764)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 1. 프로젝트 소개
+- 가지고 있는 mp3 파일을 웹에서 재생할 수 있는 음악 웹 플레이어입니다.
+- 서버와 데이터베이스는 따로 구축하지 않았으며, 오로지 기능 구현을 목적으로 했습니다.
 
-## Available Scripts
+## 2. 실행 방법
+- 저작권으로 인해 이미지와 mp3 파일은 업로드하지 않았습니다.
+- 음원에 대한 정보는 수기로 입력하여 json파일로 생성했습니다. 가지고 있는 mp3파일의 파일명을 아래와 같이 변경하시거나, json 파일을 직접 수정하여 재생해야 합니다.
 
-In the project directory, you can run:
+  ![스크린샷 2023-10-12 161555](https://github.com/jungmin801/music-player/assets/130200440/c9863f78-b4f8-4342-814e-4328071c4308)
+  
+- 이미지와 mp3 파일을 경로를 다음과 같이 설정합니다.
 
-### `npm start`
+  **이미지 파일 경로**
+  ```
+  public/img/이미지.jpg
+  ```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+  **mp3 파일 경로**
+  ```
+  public/assets/음원.mp3
+  ```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 3. 주요 기능
+- 음악 재생, 일시정지, 이전 곡(다음 곡)으로 이동, 재생목록 셔플, 다시 재생, 볼륨 조절 기능
+  ![basicfuction](https://github.com/jungmin801/music-player/assets/130200440/70fabbd2-0189-42f4-8315-11568bff989d)
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- 타임라인 및 남은 재생 시간을 화면에 표시
+- 재생목록 접기/펼치기
+- 반응형
+  
+![반응형2](https://github.com/jungmin801/music-player/assets/130200440/d16a8a1c-a102-4f26-9b87-fc8e280c0ab3)
+![반응형1](https://github.com/jungmin801/music-player/assets/130200440/929ffe05-5665-46e4-b425-cab56b3c83d3)

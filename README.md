@@ -29,7 +29,6 @@
 
 - 타임라인 및 남은 재생 시간을 화면에 표시
 - 재생목록 접기/펼치기
-- 반응형
-  
-![반응형2](https://github.com/jungmin801/music-player/assets/130200440/d16a8a1c-a102-4f26-9b87-fc8e280c0ab3)
-![반응형1](https://github.com/jungmin801/music-player/assets/130200440/929ffe05-5665-46e4-b425-cab56b3c83d3)
+- 반응형 
+  ![반응형2](https://github.com/jungmin801/music-player/assets/130200440/d16a8a1c-a102-4f26-9b87-fc8e280c0ab3)
+  ![반응형1](https://github.com/jungmin801/music-player/assets/130200440/929ffe05-5665-46e4-b425-cab56b3c83d3)

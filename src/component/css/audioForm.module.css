@@ -1,0 +1,7 @@
+.inputBox label {
+  cursor: pointer;
+}
+
+.inputBox input {
+  display: none;
+}

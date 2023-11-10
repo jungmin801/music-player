@@ -1,12 +1,12 @@
 import React from "react";
 import styles from "./css/audioForm.module.css";
-import addSong from "../icon/Add Song.svg";
+import * as S from "./css/Button";
 
 export default function AudioForm({ handleAudio }) {
   return (
     <form className={styles.inputBox}>
       <label htmlFor="fileUpload">
-        <img src={addSong} />
+        <S.AddSongIcon />
       </label>
       <input
         type="file"

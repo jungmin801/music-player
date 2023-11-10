@@ -1,26 +1,8 @@
 import { useState, useEffect } from "react";
 import styles from "./css/nowPlaying.module.css";
-import styled from "styled-components";
 import AudioForm from "./AudioForm";
-import { BaseButton } from "./Button";
-import toggleImg from "../icon/list.png";
+import * as S from "./css/Button";
 import { useHandleAudio } from "../hook/useHandleAudio";
-
-const ToggleBtn = styled(BaseButton)`
-  width: 34px;
-  height: 34px;
-  background-image: url(${toggleImg});
-  background-position: 0 0;
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
-  margin-right: 10px;
-  padding: 0;
-
-  @media screen and (max-width: 480px) {
-    display: inline-block;
-    position: relative;
-  }
-`;
 
 function PlayList({ songs, isOpened }) {
   return (
@@ -55,7 +37,9 @@ function NowPlaying({ songs, setSongs }) {
     >
       <div type="button" className={styles.titleBtn} onClick={handleToggle}>
         <h2>Now Playing</h2>
-        <ToggleBtn></ToggleBtn>
+        <button type="button">
+          <S.ToggleIcon />
+        </button>
       </div>
       <PlayList songs={songs} isOpened={isOpened} />
       <AudioForm handleAudio={handleAudio} />

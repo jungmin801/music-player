@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import styles from "./css/nowPlaying.module.css";
 import styled from "styled-components";
+import AudioForm from "./AudioForm";
 import { BaseButton } from "./Button";
 import toggleImg from "../icon/list.png";
 import { useHandleAudio } from "../hook/useHandleAudio";
@@ -57,16 +58,7 @@ function NowPlaying({ songs, setSongs }) {
         <ToggleBtn></ToggleBtn>
       </div>
       <PlayList songs={songs} isOpened={isOpened} />
-      <form>
-        <label htmlFor="fileUpload"></label>
-        <input
-          type="file"
-          id="fileUpload"
-          accept=".mp3, .wav"
-          onChange={handleAudio}
-          multiple
-        />
-      </form>
+      <AudioForm handleAudio={handleAudio} />
     </section>
   );
 }

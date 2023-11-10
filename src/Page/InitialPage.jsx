@@ -1,4 +1,5 @@
 import React from "react";
+import AudioForm from "../component/AudioForm.jsx";
 import { useHandleAudio } from "../hook/useHandleAudio.js";
 
 function InitialPage({ setSongs }) {
@@ -6,17 +7,8 @@ function InitialPage({ setSongs }) {
 
   return (
     <>
-      <div>음악 파일을 업로드하세요.</div>
-      <form>
-        <label htmlFor="fileUpload"></label>
-        <input
-          type="file"
-          id="fileUpload"
-          accept=".mp3"
-          onChange={handleAudio}
-          multiple
-        />
-      </form>
+      <p>음악 파일을 업로드하세요.</p>
+      <AudioForm handleAudio={handleAudio} />
     </>
   );
 }

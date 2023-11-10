@@ -1,12 +1,8 @@
-import Card from "./component/Card";
-import NowPlaying from "./component/NowPlaying";
-import Player from "./component/Player";
 import InitialPage from "./Page/InitialPage";
 import PlayPage from "./Page/PlayPage";
 import "./reset.css";
 import "./App.css";
 import { useState } from "react";
-import objData from "./objData.json";
 
 function App() {
   const [songs, setSongs] = useState([]);

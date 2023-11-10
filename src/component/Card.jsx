@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
 import styles from "./css/card.module.css";
+import basicImg from "../image/basic.jpg";
 
 function Card({ songs, currentSongIndex }) {
   const [scrollPosition, setScrollPosition] = useState(0);
@@ -36,7 +37,7 @@ function Card({ songs, currentSongIndex }) {
     <section className={styles.card} ref={cardEl}>
       <h2 className="a11y-hidden">Current Music</h2>
       <img
-        src={songs[currentSongIndex]?.image}
+        src={songs.length === 0 ? basicImg : songs[currentSongIndex]?.image}
         alt=""
         className={styles.albumImg}
       />

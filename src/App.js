@@ -1,4 +1,3 @@
-import InitialPage from "./Page/InitialPage";
 import PlayPage from "./Page/PlayPage";
 import "./reset.css";
 import "./App.css";
@@ -11,18 +10,14 @@ function App() {
 
   return (
     <div className="App">
-      {songs.length === 0 ? (
-        <InitialPage songs={songs} setSongs={setSongs} />
-      ) : (
-        <PlayPage
-          songs={songs}
-          setSongs={setSongs}
-          currentSongIndex={currentSongIndex}
-          setCurrentSongIndex={setCurrentSongIndex}
-          isPlaying={isPlaying}
-          setIsPlaying={setIsPlaying}
-        />
-      )}
+      <PlayPage
+        songs={songs}
+        setSongs={setSongs}
+        currentSongIndex={currentSongIndex}
+        setCurrentSongIndex={setCurrentSongIndex}
+        isPlaying={isPlaying}
+        setIsPlaying={setIsPlaying}
+      />
     </div>
   );
 }

@@ -2,6 +2,7 @@ import React from "react";
 import Card from "../component/Card";
 import NowPlaying from "../component/NowPlaying";
 import Player from "../component/Player";
+import basicImg from "../image/basic.jpg";
 
 function PlayPage({
   songs,
@@ -12,11 +13,13 @@ function PlayPage({
   setIsPlaying,
 }) {
   return (
-    <p>
+    <>
       <div
         className="bg"
         style={{
-          backgroundImage: `url(${songs[currentSongIndex].image})`,
+          backgroundImage: `url(${
+            songs.length === 0 ? basicImg : songs[currentSongIndex]?.image
+          })`,
         }}
       >
         <article>
@@ -33,7 +36,7 @@ function PlayPage({
           setIsPlaying={setIsPlaying}
         />
       </div>
-    </p>
+    </>
   );
 }
 

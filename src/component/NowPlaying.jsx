@@ -7,7 +7,7 @@ import { useHandleAudio } from "../hook/useHandleAudio";
 function PlayList({ songs, isOpened }) {
   return (
     <ol className={isOpened ? styles.listOpened : styles.hidden}>
-      {songs.map((item, i) => {
+      {songs?.map((item, i) => {
         return (
           <li key={i + 1}>
             <span>{`${i + 1}.`}</span>

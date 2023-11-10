@@ -114,7 +114,16 @@ function NowPlaying({ songs, setSongs }) {
         <ToggleBtn></ToggleBtn>
       </div>
       <PlayList songs={songs} isOpened={isOpened} />
-      <input type="file" accept=".mp3" onChange={handleAudio} />
+      <form>
+        <label htmlFor="fileUpload"></label>
+        <input
+          type="file"
+          id="fileUpload"
+          accept=".mp3, .wav"
+          onChange={handleAudio}
+          multiple
+        />
+      </form>
     </section>
   );
 }

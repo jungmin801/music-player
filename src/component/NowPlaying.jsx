@@ -1,15 +1,19 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import styles from "./css/nowPlaying.module.css";
 import AudioForm from "./AudioForm";
 import * as S from "./css/Button";
 import { useHandleAudio } from "../hook/useHandleAudio";
+import { SongsContext } from "../context/context";
 
-function PlayList({ songs, isOpened }) {
-  return (
+function PlayList({ isOpened }) {
+  const { songs } = useContext(SongsContext);
+  return songs.length === 0 ? (
+    "원하는 음악을 업로드하세요."
+  ) : (
     <ol className={isOpened ? styles.listOpened : styles.hidden}>
       {songs?.map((item, i) => {
         return (
-          <li key={i + 1}>
+          <li key={item.id}>
             <span>{`${i + 1}.`}</span>
             <span>{`${item.song} - ${item.artist}`}</span>
           </li>
@@ -19,7 +23,8 @@ function PlayList({ songs, isOpened }) {
   );
 }
 
-function NowPlaying({ songs, setSongs }) {
+function NowPlaying() {
+  const { songs, setSongs } = useContext(SongsContext);
   const handleAudio = useHandleAudio(setSongs);
   const [isOpened, setIsOpened] = useState(true);
   //songs 배열이 변경될 때마다 재렌더링

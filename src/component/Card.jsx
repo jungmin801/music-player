@@ -1,9 +1,11 @@
-import { useState, useEffect, useRef } from "react";
-import styled from "styled-components";
+import { useState, useEffect, useRef, useContext } from "react";
 import styles from "./css/card.module.css";
 import basicImg from "../image/basic.jpg";
+import { SongsContext, CSIndexContext } from "../context/context";
 
-function Card({ songs, currentSongIndex }) {
+function Card() {
+  const { songs } = useContext(SongsContext);
+  const { currentSongIndex } = useContext(CSIndexContext);
   const [scrollPosition, setScrollPosition] = useState(0);
   const titleEl = useRef(0);
   const cardEl = useRef(0);

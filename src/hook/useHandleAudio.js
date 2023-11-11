@@ -1,4 +1,5 @@
-import { useCallback, useState } from "react";
+import { useCallback } from "react";
+import basicImg from "../image/basic.jpg";
 import jsmediatags from "../jsmediatags/dist/jsmediatags.min.js";
 
 function b64toBlob(dataURI) {
@@ -23,8 +24,8 @@ export const useHandleAudio = (setSongs) => {
 
         jsmediatags.read(file, {
           onSuccess: function (tag) {
-            const title = tag.tags.title;
-            const artist = tag.tags.artist;
+            let title = tag.tags.title || "제목 없음";
+            let artist = tag.tags.artist || "알 수 없는 음악가";
             let albumCover = tag.tags.picture;
 
             if (albumCover) {
@@ -38,6 +39,8 @@ export const useHandleAudio = (setSongs) => {
               )}`;
               albumCover = b64toBlob(albumCover);
               albumCover = URL.createObjectURL(albumCover);
+            } else {
+              albumCover = basicImg;
             }
 
             let data = {

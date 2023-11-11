@@ -16,16 +16,17 @@ function b64toBlob(dataURI) {
 export const useHandleAudio = (setSongs) => {
   const handleAudio = useCallback(
     (event) => {
-      let files = event.target.files;
+      const files = event.target.files;
       for (let i = 0; i < files.length; i += 1) {
-        let file = event.target.files[i];
+        const file = event.target.files[i];
         const urlObj = URL.createObjectURL(file);
-        let src = urlObj;
+        const src = urlObj;
+        const id = src.slice(-12);
 
         jsmediatags.read(file, {
           onSuccess: function (tag) {
-            let title = tag.tags.title || "제목 없음";
-            let artist = tag.tags.artist || "알 수 없는 음악가";
+            const title = tag.tags.title || "제목 없음";
+            const artist = tag.tags.artist || "알 수 없는 음악가";
             let albumCover = tag.tags.picture;
 
             if (albumCover) {
@@ -43,8 +44,8 @@ export const useHandleAudio = (setSongs) => {
               albumCover = basicImg;
             }
 
-            let data = {
-              id: i,
+            const data = {
+              id: id,
               artist: artist,
               song: title,
               image: albumCover,

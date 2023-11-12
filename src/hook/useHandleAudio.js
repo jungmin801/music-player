@@ -1,6 +1,6 @@
 import { useCallback } from "react";
 import basicImg from "../image/basic.jpg";
-import jsmediatags from "../jsmediatags/dist/jsmediatags.min.js";
+// import jsmediatags from "../../public/jsmediatags/dist/jsmediatags";
 
 function b64toBlob(dataURI) {
   var byteString = atob(dataURI.split(",")[1]);
@@ -23,7 +23,7 @@ export const useHandleAudio = (setSongs) => {
         const src = urlObj;
         const id = src.slice(-12);
 
-        jsmediatags.read(file, {
+        window.jsmediatags.read(file, {
           onSuccess: function (tag) {
             const title = tag.tags.title || "제목 없음";
             const artist = tag.tags.artist || "알 수 없는 음악가";

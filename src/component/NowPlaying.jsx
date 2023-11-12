@@ -1,19 +1,26 @@
-import { useEffect, useContext } from "react";
+import { useEffect, useContext, useState } from "react";
 import styles from "./css/nowPlaying.module.css";
-import * as S from "./css/Button";
+import * as S from "./Button";
 import { SongsContext, CSIndexContext } from "../context/context";
 
 function Marker() {
   return <div className={styles.marker}></div>;
 }
 
-function PlayList() {
+function PlayList({ showList }) {
   const { songs } = useContext(SongsContext);
   const { currentSongIndex } = useContext(CSIndexContext);
+
   return songs.length === 0 ? (
-    <p className={styles.initialInfo}>Playlist is now empty.</p>
+    <p
+      className={`${styles.initialInfo} ${
+        showList ? styles.showList : styles.hideList
+      }`}
+    >
+      Playlist is now empty.
+    </p>
   ) : (
-    <ol>
+    <ol className={showList ? styles.showList : styles.hideList}>
       {songs?.map((item, i) => {
         return (
           <li key={item.id}>
@@ -32,20 +39,25 @@ function PlayList() {
 
 function NowPlaying() {
   const { songs } = useContext(SongsContext);
+  const [showList, setShowList] = useState(true);
 
   //songs 배열이 변경될 때마다 재렌더링
   useEffect(() => {}, [songs]);
 
+  const handleList = () => {
+    setShowList(!showList);
+  };
+
   return (
-    <section className={styles.nowPlayingList}>
-      <div type="button" className={styles.titleBox}>
+    <div className={styles.nowPlayingList}>
+      <div className={styles.titleBox}>
         <h2>Now Playing</h2>
-        <button type="button" className={styles.toggleBtn}>
+        <button type="button" className={styles.toggleBtn} onClick={handleList}>
           <S.ToggleIcon />
         </button>
       </div>
-      <PlayList songs={songs} />
-    </section>
+      <PlayList songs={songs} showList={showList} />
+    </div>
   );
 }
 

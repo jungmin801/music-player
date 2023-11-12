@@ -1,12 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import styles from "./css/audioForm.module.css";
-import * as S from "./css/Button";
+import * as S from "./Button";
+import { SongsContext } from "../context/context";
 
 export default function AudioForm({ handleAudio }) {
+  const { songs } = useContext(SongsContext);
   return (
     <form className={styles.inputBox}>
       <label htmlFor="fileUpload">
-        <S.AddSongIcon />
+        <S.AddSongIcon songs={songs} />
       </label>
       <input
         type="file"

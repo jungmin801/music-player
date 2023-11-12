@@ -1,15 +1,15 @@
 import React from "react";
-import styled, { keyframes } from "styled-components";
-import { ReactComponent as Backward } from "../../image/icon/Backward.svg";
-import { ReactComponent as Forward } from "../../image/icon/Forward.svg";
-import { ReactComponent as Play } from "../../image/icon/Play.svg";
-import { ReactComponent as Pause } from "../../image/icon/Pause.svg";
-import { ReactComponent as Restart } from "../../image/icon/Restart.svg";
-import { ReactComponent as Shuffle } from "../../image/icon/Shuffle.svg";
-import { ReactComponent as Speaker } from "../../image/icon/Speaker.svg";
-import { ReactComponent as AddSong } from "../../image/icon/AddSong.svg";
-import { ReactComponent as Toggle } from "../../image/icon/Toggle.svg";
-import { ReactComponent as Mute } from "../../image/icon/Mute.svg";
+import styled, { keyframes, css } from "styled-components";
+import { ReactComponent as Backward } from "../image/icon/Backward.svg";
+import { ReactComponent as Forward } from "../image/icon/Forward.svg";
+import { ReactComponent as Play } from "../image/icon/Play.svg";
+import { ReactComponent as Pause } from "../image/icon/Pause.svg";
+import { ReactComponent as Restart } from "../image/icon/Restart.svg";
+import { ReactComponent as Shuffle } from "../image/icon/Shuffle.svg";
+import { ReactComponent as Speaker } from "../image/icon/Speaker.svg";
+import { ReactComponent as AddSong } from "../image/icon/AddSong.svg";
+import { ReactComponent as Toggle } from "../image/icon/Toggle.svg";
+import { ReactComponent as Mute } from "../image/icon/Mute.svg";
 
 export const BackwardIcon = styled(Backward)`
   height: 25px;
@@ -57,8 +57,9 @@ export const PlayIcon = styled(Play)`
 
 export const PauseIcon = styled(Pause)`
   &:hover {
-    path {
+    rect {
       fill: var(--pink);
+      stroke: var(--pink);
     }
     circle {
       stroke: var(--pink);
@@ -78,6 +79,11 @@ export const ToggleIcon = styled(Toggle)`
     path {
       fill: var(--pink);
     }
+  }
+
+  @media screen and (max-width: 767px) {
+    width: 28px;
+    height: 28px;
   }
 
   @media screen and (max-width: 480px) {
@@ -142,9 +148,30 @@ export const MuteIcon = styled(Mute)`
   }
 `;
 
+const pulse = keyframes`
+  0% {
+    transform: scale(1);
+    opacity: 0.7;
+  }
+  50% {
+    transform: scale(1.3);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0.7;
+  }
+`;
+
 export const AddSongIcon = styled(AddSong)`
   width: 36px;
   height: 34px;
+
+  ${(props) =>
+    props.songs.length === 0 &&
+    css`
+      animation: ${pulse} 1.8s infinite;
+    `}
 
   &:hover {
     path {

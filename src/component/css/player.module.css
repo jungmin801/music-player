@@ -14,7 +14,7 @@ nav {
 .btnContainer {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  justify-content: center;
   flex-grow: 1;
 }
 
@@ -28,6 +28,7 @@ nav {
   nav {
     width: 100vw;
     justify-content: space-around;
+    gap: 30px;
   }
 
   .btnPlayGroup {
@@ -37,13 +38,19 @@ nav {
 
 @media screen and (max-width: 480px) {
   nav {
+    height: 70px;
     padding: 0 20px;
   }
 
   .btnContainer {
     flex-direction: column-reverse;
     position: absolute;
-    top: -145%;
-    gap: 15px;
+    top: -260%;
+  }
+}
+
+@media screen and (min-height: 700px) {
+  .btnContainer {
+    top: -340%;
   }
 }

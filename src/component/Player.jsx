@@ -1,11 +1,11 @@
 import { useEffect, useState, useRef, useContext } from "react";
 import styles from "./css/player.module.css";
 import Volume from "./Volume";
-import Audio from "./Audio.jsx";
-import Timeline from "./Timeline.jsx";
+import Audio from "./Audio";
+import Timeline from "./Timeline";
 import AudioForm from "./AudioForm";
 import { useHandleAudio } from "../hook/useHandleAudio";
-import * as S from "./css/Button.jsx";
+import * as S from "./Button";
 import { SongsContext, CSIndexContext } from "../context/context.js";
 
 function Player({ isPlaying, setIsPlaying }) {

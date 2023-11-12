@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styles from "./css/volume.module.css";
-import * as S from "./css/Button";
+import * as S from "./Button";
 
 function Volume({ volume, setVolume }) {
   const [isMuted, SetIsMuted] = useState(false);

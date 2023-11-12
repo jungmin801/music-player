@@ -33,10 +33,10 @@ function Card() {
       setScrollPosition(0);
       clearInterval(scrollInterval);
     };
-  }, [currentSongIndex]);
+  }, [songs, currentSongIndex]);
 
   return (
-    <section className={styles.card} ref={cardEl}>
+    <div className={styles.card} ref={cardEl}>
       <h2 className="a11y-hidden">Current Music</h2>
       <img
         src={songs.length === 0 ? basicImg : songs[currentSongIndex]?.image}
@@ -47,7 +47,7 @@ function Card() {
         <span ref={titleEl}>{songs[currentSongIndex]?.song}</span>
       </h3>
       <p>{songs[currentSongIndex]?.artist}</p>
-    </section>
+    </div>
   );
 }
 export default Card;

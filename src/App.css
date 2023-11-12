@@ -22,18 +22,42 @@
 }
 
 /*reset*/
+* {
+  box-sizing: border-box;
+}
+
 img,
 svg {
   vertical-align: top;
+}
+
+ol,
+ul,
+dl,
+li {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+button {
+  padding: 0;
+  margin: 0;
 }
 
 .App {
   height: 100vh;
 }
 
-/* body style */
+/* style */
 body {
   font-family: "Roboto", sans-serif;
+}
+
+button {
+  min-width: 50px;
+  min-height: 50px;
+  cursor: pointer;
 }
 
 /* 배경이미지 */

@@ -1,9 +1,11 @@
 import { useEffect, useState, useRef, useContext } from "react";
 import styles from "./css/player.module.css";
-import VolumeModal from "./Volume";
+import Volume from "./Volume";
 import Audio from "./Audio.jsx";
 import Timeline from "./Timeline.jsx";
-import * as S from "./css/Button";
+import AudioForm from "./AudioForm";
+import { useHandleAudio } from "../hook/useHandleAudio";
+import * as S from "./css/Button.jsx";
 import { SongsContext, CSIndexContext } from "../context/context.js";
 
 function Player({ isPlaying, setIsPlaying }) {
@@ -11,11 +13,14 @@ function Player({ isPlaying, setIsPlaying }) {
   const [currentTime, setCurrentTime] = useState(0);
   const [totalDuration, setTotalDuration] = useState(0);
   const [isShuffle, setIsShuffled] = useState(0);
+
   const [isVolumeClicked, setIsVolumeClicked] = useState(false);
   const [volume, setVolume] = useState(0.3);
 
   const { songs, setSongs } = useContext(SongsContext);
   const { currentSongIndex, setCurrentSongIndex } = useContext(CSIndexContext);
+
+  const handleAudio = useHandleAudio(setSongs);
   // 음원의 총 길이 가져오기
   useEffect(() => {
     if (audioEl) {
@@ -96,11 +101,6 @@ function Player({ isPlaying, setIsPlaying }) {
     }
   };
 
-  // 볼륨 조절 바 클릭 여부 제어
-  const showVolumeBar = () => {
-    setIsVolumeClicked(!isVolumeClicked);
-  };
-
   // 볼륨 제어하기
   useEffect(() => {
     if (audioEl) {
@@ -109,7 +109,7 @@ function Player({ isPlaying, setIsPlaying }) {
   }, [volume]);
 
   return (
-    <footer>
+    <nav>
       <Audio
         audioEl={audioEl}
         songIndex={songs[currentSongIndex]}
@@ -123,48 +123,37 @@ function Player({ isPlaying, setIsPlaying }) {
           }
         }}
       />
-      <div className={styles.btnPlayGroup}>
-        <button type="button" onClick={playPrevSong}>
-          <S.BackwardIcon />
-        </button>
-        <button
-          type="button"
-          className={`${isPlaying ? "pause" : "play"}`}
-          onClick={handlePlay}
-        >
-          <S.PlayIcon />
-        </button>
-        <button type="button" onClick={playNextSong}>
-          <S.ForwardIcon />
-        </button>
+      <AudioForm handleAudio={handleAudio} />
+      <div className={styles.btnContainer}>
+        <div className={styles.btnPlayGroup}>
+          <button type="button" onClick={replaySong}>
+            <S.ReplayIcon />
+          </button>
+          <button type="button" onClick={playPrevSong}>
+            <S.BackwardIcon />
+          </button>
+          <button type="button" onClick={handlePlay}>
+            {isPlaying ? <S.PauseIcon /> : <S.PlayIcon />}
+          </button>
+          <button type="button" onClick={playNextSong}>
+            <S.ForwardIcon />
+          </button>
+          <button type="button" onClick={shuffleSongs}>
+            <S.ShuffleIcon />
+          </button>
+        </div>
+        <Timeline
+          currentTime={currentTime}
+          totalDuration={totalDuration}
+          onChange={(e) => {
+            if (audioEl) {
+              audioEl.current.currentTime = e.target.value;
+            }
+          }}
+        />
       </div>
-      <Timeline
-        currentTime={currentTime}
-        totalDuration={totalDuration}
-        onChange={(e) => {
-          if (audioEl) {
-            audioEl.current.currentTime = e.target.value;
-          }
-        }}
-      />
-      <div className={styles.btnUtilityGroup}>
-        <button type="button" onClick={replaySong}>
-          <S.ReplayIcon />
-        </button>
-
-        <button type="button" onClick={shuffleSongs}>
-          <S.ShuffleIcon />
-        </button>
-
-        <button type="button" onClick={showVolumeBar}>
-          <S.VolumeIcon />
-        </button>
-
-        {isVolumeClicked && (
-          <VolumeModal volume={volume} setVolume={setVolume} />
-        )}
-      </div>
-    </footer>
+      <Volume volume={volume} setVolume={setVolume} />
+    </nav>
   );
 }
 

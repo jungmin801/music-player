@@ -1,4 +1,4 @@
-.card{
+.card {
   box-sizing: border-box;
   width: 280px;
   height: 100%;
@@ -8,13 +8,13 @@
   overflow: hidden;
 }
 
-.card .albumImg{
+.card .albumImg {
   aspect-ratio: 1 / 1;
   border-radius: 30px;
   box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.25);
 }
 
-.card h3 { 
+.card h3 {
   text-align: center;
   padding: 1rem 0 0.5rem 0;
   font-size: 2.25em;
@@ -28,33 +28,29 @@
   font-weight: 700;
 }
 
-
-@media screen and (max-width: 767px){
-  .card{
+@media screen and (max-width: 767px) {
+  .card {
     width: 100%;
     height: auto;
     align-items: center;
     justify-content: flex-end;
   }
 
-  .card .albumImg{
+  .card .albumImg {
     min-width: 200px;
     max-width: 45%;
     margin: 0 auto;
   }
-
 }
 
-@media screen and (max-width: 480px){
-  .card{
+@media screen and (max-width: 480px) {
+  .card {
     max-width: 100%;
     justify-content: center;
-    margin-bottom: 7em;
+    margin-bottom: 10rem;
   }
 
-  .card .albumImg{
-    max-width: 80%;
+  .card .albumImg {
     margin: 0 auto;
   }
-
 }

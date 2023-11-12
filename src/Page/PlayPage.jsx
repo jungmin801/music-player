@@ -3,6 +3,7 @@ import Card from "../component/Card";
 import NowPlaying from "../component/NowPlaying";
 import Player from "../component/Player";
 import basicImg from "../image/basic.jpg";
+import styles from "./css/PlayPage.module.css";
 import { SongsContext, CSIndexContext } from "../context/context";
 function PlayPage() {
   const [songs, setSongs] = useState([]);
@@ -22,10 +23,10 @@ function PlayPage() {
             })`,
           }}
         >
-          <article>
+          <section className={styles.section}>
             <Card />
             <NowPlaying />
-          </article>
+          </section>
           <Player
             className="player"
             isPlaying={isPlaying}

@@ -1,37 +1,16 @@
-article {
-  width:80%;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-
-  
-  display: flex;
-  justify-content: center;
-  gap: 10%;
-  
-}
-
-/* NowPlaying style */
-
-.nowPlayingList{
+.nowPlayingList {
   width: 50%;
   padding: 10px;
   overflow: auto;
   box-sizing: border-box;
 }
 
-.titleBtn{
+.titleBox {
   display: flex;
   flex-direction: row-reverse;
   justify-content: flex-end;
   align-items: center;
   margin-bottom: 40px;
-  padding:0;
-}
-
-.titleBtn:hover{
-  cursor: pointer;
 }
 
 .nowPlayingList h2 {
@@ -40,102 +19,86 @@ article {
   font-weight: 700;
 }
 
-.nowPlayingList li{
+.nowPlayingList .initialInfo {
+  margin-left: 10px;
+}
+
+.nowPlayingList ol {
+  margin-left: 16px;
+  overflow: auto;
+}
+
+.nowPlayingList li {
+  display: flex;
   color: var(--white);
   font-size: 18px;
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
-  margin-bottom: 24px;
+  margin-bottom: 1rem;
 }
 
-
-.nowPlayingList ol.hidden{
-  max-height:0;
-  transition: max-height 0.3s;
-  overflow: hidden;
+.nowPlayingList .number {
+  margin-right: 9.6px;
 }
 
-.nowPlayingList ol.listOpened{
-  max-height: 40%; 
-  transition: max-height 0.3s;
-  overflow: hidden;
+.marker {
+  width: 0;
+  height: 0;
+  border-bottom: 10px solid transparent;
+  border-top: 10px solid transparent;
+  border-left: 15px solid var(--pink);
+  border-right: 10px solid transparent;
 }
 
-@media screen and (max-width: 767px){
-  article{
-    flex-direction: column;
-    align-items: center;
-    gap: 0;
-  }
-
-  .nowPlayingList{
+@media screen and (max-width: 767px) {
+  .nowPlayingList {
     width: 100%;
     height: 250px;
   }
 
-  .nowPlayingList .titleBtn{
+  .nowPlayingList .titleBox {
     width: 100%;
     justify-content: center;
     margin: 20px 0;
   }
 
-  .nowPlayingList .titleBtn > h2{
+  .nowPlayingList .titleBox > h2 {
     font-size: 26px;
   }
 
-
-  .nowPlayingList ol > li{
+  .nowPlayingList ol > li {
     text-align: center;
     margin-bottom: 14px;
   }
-
 }
 
-@media screen and (max-width: 480px){
-  article{
-    flex-direction: column;
-    height: 100vh;
-  }
-
-  .nowPlayingList{
+@media screen and (max-width: 480px) {
+  .nowPlayingList {
     position: absolute;
-    top:0;
-    padding:0;
-    height: 40%;
+    top: 0;
+    padding: 0;
   }
 
-  .nowPlayingList .titleBtn{
-    width: 100%;
+  .nowPlayingList .titleBox {
+    min-width: 30px;
+    min-height: 30px;
     justify-content: center;
-    background-color: rgba(0,0,0,0.5);
-    height: 24px;
+    background-color: rgba(0, 0, 0, 0.5);
     border-radius: 0 0 10px 10px;
-    margin: 0;
+    margin-right: 6px;
   }
 
-  .nowPlayingList .titleBtn > h2{
+  .nowPlayingList .titleBox > h2 {
     font-size: 14px;
   }
 
-  .nowPlayingList ol > li{
+  .nowPlayingList ol > li {
     text-align: left;
-    margin-bottom: 1em;
+    margin-bottom: 1rem;
   }
 
-  .nowPlayingList .titleBtn .toggle{
-    width: 20px;
-    height: 20px;
+  .nowPlayingList .initialInfo {
+    display: none;
   }
-
-  .nowPlayingList.active{
-    background-color: rgba(0,0,0,0.6);
-    border-radius: 0 0 10px 10px;
-  }
-
-  .nowPlayingList ol.listOpened{
-    padding: 15px 10px;
-    box-sizing: border-box;
-  }
-
 }

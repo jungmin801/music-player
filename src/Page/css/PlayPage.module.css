@@ -1,0 +1,25 @@
+.section {
+  width: 80%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  display: flex;
+  justify-content: center;
+  gap: 10%;
+}
+
+@media screen and (max-width: 767px) {
+  .section {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  section {
+    flex-direction: column;
+    height: 100vh;
+  }
+}

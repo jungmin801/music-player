@@ -44,13 +44,7 @@ nav {
 
   .btnContainer {
     flex-direction: column-reverse;
-    position: absolute;
-    top: -260%;
-  }
-}
-
-@media screen and (min-height: 700px) {
-  .btnContainer {
-    top: -340%;
+    position: fixed;
+    top: 60%;
   }
 }

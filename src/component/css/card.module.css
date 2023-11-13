@@ -45,7 +45,7 @@
 
 @media screen and (max-width: 480px) {
   .card {
-    position: absolute;
+    position: fixed;
     top: 40%;
     transform: translateY(-50%);
 

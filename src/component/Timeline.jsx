@@ -18,9 +18,7 @@ function Timeline({ currentTime, totalDuration, onChange }) {
 
   return (
     <div className={styles.container}>
-      <p style={{ paddingRight: "1.2em" }}>
-        {formatTime(totalDuration - currentTime)}
-      </p>
+      <p className={styles.time}>{formatTime(totalDuration - currentTime)}</p>
       <input
         type="range"
         className={styles.timeline}

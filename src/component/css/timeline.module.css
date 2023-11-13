@@ -13,6 +13,10 @@
   border-radius: 10px;
 }
 
+.time {
+  padding-right: 1.2rem;
+}
+
 @media screen and (max-width: 480px) {
   .container {
     flex-direction: column-reverse;
@@ -23,7 +27,8 @@
   }
 
   .container p {
-    padding-top: 0.5em;
+    padding-top: 0.5rem;
+    padding-right: 0;
     align-self: flex-end;
   }
 }

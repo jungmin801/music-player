@@ -1,17 +1,5 @@
 import { useCallback } from "react";
 import basicImg from "../image/basic.jpg";
-// import jsmediatags from "../../public/jsmediatags/dist/jsmediatags";
-
-function b64toBlob(dataURI) {
-  var byteString = atob(dataURI.split(",")[1]);
-  var ab = new ArrayBuffer(byteString.length);
-  var ia = new Uint8Array(ab);
-
-  for (var i = 0; i < byteString.length; i++) {
-    ia[i] = byteString.charCodeAt(i);
-  }
-  return new Blob([ab], { type: "image/jpeg" });
-}
 
 export const useHandleAudio = (setSongs) => {
   const handleAudio = useCallback(
@@ -30,16 +18,11 @@ export const useHandleAudio = (setSongs) => {
             let albumCover = tag.tags.picture;
 
             if (albumCover) {
-              let base64String = "";
-              albumCover.data.forEach((data) => {
-                base64String += String.fromCharCode(data);
-              });
-
-              albumCover = `data:${albumCover.format};base64,${window.btoa(
-                base64String
-              )}`;
-              albumCover = b64toBlob(albumCover);
-              albumCover = URL.createObjectURL(albumCover);
+              const albumCoverBlob = new Blob(
+                [new Uint8Array(albumCover.data)],
+                { type: albumCover.format }
+              );
+              albumCover = URL.createObjectURL(albumCoverBlob);
             } else {
               albumCover = basicImg;
             }

@@ -21,7 +21,7 @@ export const BackwardIcon = styled(Backward)`
     }
   }
 
-  @media screen and (max-width: 480px) {
+  @media screen and (max-width: 767px) {
     height: 20px;
   }
 `;
@@ -34,7 +34,7 @@ export const ForwardIcon = styled(Forward)`
       fill: var(--pink);
     }
   }
-  @media screen and (max-width: 480px) {
+  @media screen and (max-width: 767px) {
     height: 20px;
   }
 `;
@@ -49,6 +49,11 @@ export const PlayIcon = styled(Play)`
       stroke: var(--pink);
     }
   }
+
+  @media screen and (max-width: 767px) {
+    height: 40px;
+  }
+
   @media screen and (max-width: 480px) {
     width: 50px;
     height: 50px;
@@ -65,6 +70,10 @@ export const PauseIcon = styled(Pause)`
       stroke: var(--pink);
     }
   }
+  @media screen and (max-width: 767px) {
+    height: 40px;
+  }
+
   @media screen and (max-width: 480px) {
     width: 50px;
     height: 50px;
@@ -102,7 +111,7 @@ export const ReplayIcon = styled(Restart)`
       fill: var(--pink);
     }
   }
-  @media screen and (max-width: 480px) {
+  @media screen and (max-width: 767px) {
     height: 20px;
   }
 `;
@@ -115,7 +124,7 @@ export const ShuffleIcon = styled(Shuffle)`
       fill: var(--pink);
     }
   }
-  @media screen and (max-width: 480px) {
+  @media screen and (max-width: 767px) {
     height: 20px;
   }
 `;
@@ -129,8 +138,8 @@ export const VolumeIcon = styled(Speaker)`
       fill: var(--pink);
     }
   }
-  @media screen and (max-width: 480px) {
-    height: 30px;
+  @media screen and (max-width: 767px) {
+    height: 20px;
   }
 `;
 
@@ -143,8 +152,8 @@ export const MuteIcon = styled(Mute)`
       fill: var(--pink);
     }
   }
-  @media screen and (max-width: 480px) {
-    height: 30px;
+  @media screen and (max-width: 767px) {
+    height: 20px;
   }
 `;
 
@@ -183,8 +192,8 @@ export const AddSongIcon = styled(AddSong)`
     }
   }
 
-  @media screen and (max-width: 480px) {
-    width: 32px;
-    height: 30px;
+  @media screen and (max-width: 767px) {
+    width: 30px;
+    height: 28px;
   }
 `;

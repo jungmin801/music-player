@@ -31,10 +31,14 @@
   display: flex;
   color: var(--white);
   font-size: 18px;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  overflow: hidden;
   margin-bottom: 1rem;
+}
+
+.nowPlayingList li > p {
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .nowPlayingList .number {

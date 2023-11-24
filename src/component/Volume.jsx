@@ -22,8 +22,6 @@ function Volume({ volume, setVolume }) {
     SetIsMuted(!isMuted);
   };
 
-  console.log(isMuted);
-
   return (
     <div className={styles.volumeContainer}>
       <button type="button" onClick={handleMute}>

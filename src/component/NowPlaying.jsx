@@ -1,15 +1,16 @@
-import { useEffect, useContext, useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./css/nowPlaying.module.css";
 import * as S from "./Button";
-import { SongsContext, CSIndexContext } from "../context/context";
+import { useRecoilValue } from "recoil";
+import { SongItemsAtom, CurrentSongIndexAtom } from "../atoms/atomList";
 
 function Marker() {
   return <div className={styles.marker}></div>;
 }
 
 function PlayList({ showList }) {
-  const { songs } = useContext(SongsContext);
-  const { currentSongIndex } = useContext(CSIndexContext);
+  const { songs } = useRecoilValue(SongItemsAtom);
+  const { currentSongIndex } = useRecoilValue(CurrentSongIndexAtom);
 
   return songs.length === 0 ? (
     <p

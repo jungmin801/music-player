@@ -1,11 +1,12 @@
-import { useState, useEffect, useRef, useContext } from "react";
+import { useState, useEffect, useRef } from "react";
 import styles from "./css/card.module.css";
 import basicImg from "../image/basic.jpg";
-import { SongsContext, CSIndexContext } from "../context/context";
+import { useRecoilValue } from "recoil";
+import { SongItemsAtom, CurrentSongIndexAtom } from "../atoms/atomList";
 
 function Card() {
-  const { songs } = useContext(SongsContext);
-  const { currentSongIndex } = useContext(CSIndexContext);
+  const { songs } = useRecoilValue(SongItemsAtom);
+  const { currentSongIndex } = useRecoilValue(CurrentSongIndexAtom);
   const [scrollPosition, setScrollPosition] = useState(0);
   const titleEl = useRef(0);
   const cardEl = useRef(0);

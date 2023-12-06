@@ -17,9 +17,7 @@ function PlayPage() {
       className="bg"
       style={{
         backgroundImage: `url(${
-          songs[currentSongIndex] !== undefined
-            ? songs[currentSongIndex]?.image
-            : basicImg
+          songs.length === 0 ? basicImg : songs[currentSongIndex]?.image
         })`,
       }}
     >

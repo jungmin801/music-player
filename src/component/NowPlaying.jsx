@@ -1,25 +1,18 @@
-import { useEffect, useContext, useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./css/nowPlaying.module.css";
 import * as S from "./Button";
-import { SongsContext, CSIndexContext } from "../context/context";
+import { useRecoilValue } from "recoil";
+import { SongItemsAtom, CurrentSongIndexAtom } from "../atoms/atomList";
 
 function Marker() {
   return <div className={styles.marker}></div>;
 }
 
 function PlayList({ showList }) {
-  const { songs } = useContext(SongsContext);
-  const { currentSongIndex } = useContext(CSIndexContext);
+  const songs = useRecoilValue(SongItemsAtom);
+  const currentSongIndex = useRecoilValue(CurrentSongIndexAtom);
 
-  return songs.length === 0 ? (
-    <p
-      className={`${styles.initialInfo} ${
-        showList ? styles.showList : styles.hideList
-      }`}
-    >
-      Playlist is now empty.
-    </p>
-  ) : (
+  return songs.length > 0 ? (
     <ol className={showList ? styles.showList : styles.hideList}>
       {songs?.map((item, i) => {
         return (
@@ -34,11 +27,19 @@ function PlayList({ showList }) {
         );
       })}
     </ol>
+  ) : (
+    <p
+      className={`${styles.initialInfo} ${
+        showList ? styles.showList : styles.hideList
+      }`}
+    >
+      Playlist is now empty.
+    </p>
   );
 }
 
 function NowPlaying() {
-  const { songs } = useContext(SongsContext);
+  const songs = useRecoilValue(SongItemsAtom);
   const [showList, setShowList] = useState(true);
 
   //songs 배열이 변경될 때마다 재렌더링

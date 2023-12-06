@@ -1,10 +1,11 @@
 import React, { useContext } from "react";
 import styles from "./css/audioForm.module.css";
 import * as S from "./Button";
-import { SongsContext } from "../context/context";
+import { useRecoilValue } from "recoil";
+import { SongItemsAtom } from "../atoms/atomList";
 
 export default function AudioForm({ handleAudio }) {
-  const { songs } = useContext(SongsContext);
+  const songs = useRecoilValue(SongItemsAtom);
   return (
     <form className={styles.inputBox}>
       <label htmlFor="fileUpload">

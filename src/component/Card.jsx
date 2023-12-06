@@ -1,11 +1,12 @@
-import { useState, useEffect, useRef, useContext } from "react";
+import { useState, useEffect, useRef } from "react";
 import styles from "./css/card.module.css";
 import basicImg from "../image/basic.jpg";
-import { SongsContext, CSIndexContext } from "../context/context";
+import { useRecoilValue } from "recoil";
+import { SongItemsAtom, CurrentSongIndexAtom } from "../atoms/atomList";
 
 function Card() {
-  const { songs } = useContext(SongsContext);
-  const { currentSongIndex } = useContext(CSIndexContext);
+  const songs = useRecoilValue(SongItemsAtom);
+  const currentSongIndex = useRecoilValue(CurrentSongIndexAtom);
   const [scrollPosition, setScrollPosition] = useState(0);
   const titleEl = useRef(0);
   const cardEl = useRef(0);
@@ -35,18 +36,22 @@ function Card() {
     };
   }, [songs, currentSongIndex]);
 
+  console.log(songs);
+
   return (
     <div className={styles.card} ref={cardEl}>
       <h2 className="a11y-hidden">Current Music</h2>
       <img
-        src={songs.length === 0 ? basicImg : songs[currentSongIndex]?.image}
+        src={songs.length > 0 ? songs[currentSongIndex].image : basicImg}
         alt=""
         className={styles.albumImg}
       />
       <h3 style={{ transform: `translateX(${scrollPosition}px)` }}>
-        <span ref={titleEl}>{songs[currentSongIndex]?.song}</span>
+        <span ref={titleEl}>
+          {songs.length > 0 ? songs[currentSongIndex]?.song : "No Songs"}
+        </span>
       </h3>
-      <p>{songs[currentSongIndex]?.artist}</p>
+      <p>{songs.length > 0 ? songs[currentSongIndex]?.artist : "No artist"}</p>
     </div>
   );
 }

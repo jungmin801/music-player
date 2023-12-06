@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef, useContext } from "react";
+import { useEffect, useState, useRef } from "react";
 import styles from "./css/player.module.css";
 import Volume from "./Volume";
 import Audio from "./Audio";
@@ -6,19 +6,18 @@ import Timeline from "./Timeline";
 import AudioForm from "./AudioForm";
 import { useHandleAudio } from "../hook/useHandleAudio";
 import * as S from "./Button";
-import { SongsContext, CSIndexContext } from "../context/context.js";
+import { useRecoilState } from "recoil";
+import { SongItemsAtom, CurrentSongIndexAtom } from "../atoms/atomList";
 
 function Player({ isPlaying, setIsPlaying }) {
   const audioEl = useRef(null);
   const [currentTime, setCurrentTime] = useState(0);
   const [totalDuration, setTotalDuration] = useState(0);
   const [isShuffle, setIsShuffled] = useState(0);
-
-  const [isVolumeClicked, setIsVolumeClicked] = useState(false);
   const [volume, setVolume] = useState(0.3);
-
-  const { songs, setSongs } = useContext(SongsContext);
-  const { currentSongIndex, setCurrentSongIndex } = useContext(CSIndexContext);
+  const { songs, setSongs } = useRecoilState(SongItemsAtom);
+  const { currentSongIndex, setCurrentSongIndex } =
+    useRecoilState(CurrentSongIndexAtom);
 
   const handleAudio = useHandleAudio(setSongs);
   // 음원의 총 길이 가져오기

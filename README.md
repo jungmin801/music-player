@@ -14,6 +14,8 @@
 - React
 - Javscript
 - Styled-Components
+- Recoil
+- HTML5
 - jsmediatags : 음악 파일에서 메타데이터를 추출하기 위해 사용
   
 ## 4. 주요 기능

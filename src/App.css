@@ -81,7 +81,7 @@ button {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
-
+  color: var(--white);
   font-family: "Roboto", sans-serif;
 }
 

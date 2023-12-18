@@ -21,7 +21,7 @@ function PlayPage() {
         })`,
       }}
     >
-      <section>
+      <section className={styles.section}>
         <Card />
         <NowPlaying />
       </section>

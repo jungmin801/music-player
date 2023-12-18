@@ -6,15 +6,18 @@ import {
   signInWithPopup,
 } from "firebase/auth";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [userData, setUserData] = useState(null);
+  const navigate = useNavigate();
 
   const handleGoogleLogin = () => {
     const provider = new GoogleAuthProvider();
     signInWithPopup(authService, provider)
       .then((data) => {
         setUserData(data.user);
+        navigate("/player");
       })
       .catch((error) => {
         console.error(error);
@@ -26,6 +29,7 @@ const Login = () => {
     signInWithPopup(authService, provider)
       .then((data) => {
         setUserData(data.user);
+        navigate("/player");
       })
       .catch((error) => {
         console.error(error);

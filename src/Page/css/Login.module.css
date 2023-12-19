@@ -5,33 +5,86 @@
   flex-direction: column;
   height: 100%;
   gap: 40px;
+  background-color: var(--bg);
 }
 
 .container {
   text-align: center;
+  color: var(--white);
+}
+
+@keyframes logoMove {
+  0% {
+    transform: translateY(150%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes moveUp {
+  0% {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.container img {
+  height: 100px;
+  margin-bottom: 24px;
+  animation: logoMove 1.8s;
 }
 
 .container h1 {
   font-size: 36px;
   font-weight: bold;
   margin-bottom: 12px;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: moveUp 1.2s ease-in-out forwards;
+  animation-delay: 2s;
+}
+
+.container p {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: moveUp 1.2s ease-in-out forwards;
+  animation-delay: 2s;
 }
 
 .btnContainer button {
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
   width: 400px;
   border: 1px solid grey;
   background-color: var(--white);
   border-radius: 15px;
   padding: 20px 0;
   font-weight: bold;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: moveUp 1.2s ease-in-out forwards;
+  animation-delay: 2s;
 }
 
 .btnContainer button:hover {
   border: 1px solid var(--pink);
-  outline: 1px solid var(--pink);
+  outline: 3px solid var(--pink);
 }
 
 .btnContainer button:first-child {
   margin-bottom: 20px;
+}
+
+.btnContainer img {
+  width: 30px;
+  height: 30px;
 }

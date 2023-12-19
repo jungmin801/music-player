@@ -36,8 +36,6 @@ function Card() {
     };
   }, [songs, currentSongIndex]);
 
-  console.log(songs);
-
   return (
     <div className={styles.card} ref={cardEl}>
       <h2 className="a11y-hidden">Current Music</h2>

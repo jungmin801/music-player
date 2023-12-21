@@ -27,10 +27,12 @@ button {
 }
 
 body {
-  /* background-color: #eee; */
+  background-color: #eee;
   /* color: var(--white) */
 }
 
 input {
   margin: 0;
+  border: none;
+  display: block;
 }

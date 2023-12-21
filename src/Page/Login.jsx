@@ -4,6 +4,7 @@ import {
   GoogleAuthProvider,
   GithubAuthProvider,
   signInWithPopup,
+  signInWithEmailAndPassword,
 } from "firebase/auth";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -14,6 +15,8 @@ import githubImg from "../image/github.png";
 
 const Login = () => {
   const [userData, setUserData] = useState(null);
+  const [emailValue, setEmailValue] = useState("test@gmail.com");
+  const [passwordValue, setPasswordValue] = useState("test1234");
   const navigate = useNavigate();
 
   const handleGoogleLogin = () => {
@@ -24,7 +27,7 @@ const Login = () => {
         navigate("/player");
       })
       .catch((error) => {
-        console.error(error);
+        console.error(error.message);
       });
   };
 
@@ -36,37 +39,59 @@ const Login = () => {
         navigate("/player");
       })
       .catch((error) => {
-        console.error(error);
+        console.error(error.message);
       });
   };
 
-  const handleLogin = (event) => {
-    if (event.target.name === "google") {
-      handleGoogleLogin();
-    } else if (event.target.name === "github") {
-      handleGitHubLogin();
-    }
+  const handleBasicLogin = (authService, email, password) => {
+    signInWithEmailAndPassword(authService, email, password)
+      .then((data) => {
+        setUserData(data.user);
+        navigate("/player");
+      })
+      .catch((error) => {
+        console.error(error.message);
+      });
   };
 
-  console.log(userData);
   return (
     <section className={styles.section}>
       <div className={styles.container}>
-        <img src={noteImg} alt="로고" />
-        <h1>Music Player</h1>
-        <p>원하는 음악 파일을 업로드하여 나만의 재생 목록을 만들어보세요!</p>
-      </div>
+        <div className={styles.titleContainer}>
+          <img src={noteImg} alt="로고" />
+          <h1>Music Player</h1>
+          <p>
+            원하는 음악 파일을 업로드하여
+            <span>나만의 재생 목록을 만들어보세요!</span>
+          </p>
+        </div>
 
-      <div className={styles.btnContainer} onClick={handleLogin}>
-        <div>
-          <button type="button" name="google">
+        <div className={styles.loginContainer}>
+          <input
+            type="text"
+            placeholder="example@gmail.com"
+            defaultValue={emailValue}
+          />
+          <input
+            type="password"
+            placeholder="password"
+            defaultValue={passwordValue}
+          />
+          <button
+            type="button"
+            name="basic"
+            onClick={() =>
+              handleBasicLogin(authService, emailValue, passwordValue)
+            }
+          >
+            {"로그인하기"}
+          </button>
+          <hr></hr>
+          <button type="button" name="google" onClick={handleGoogleLogin}>
             <img src={googleImg} alt="" />
             구글 계정으로 로그인
           </button>
-        </div>
-
-        <div>
-          <button type="button" name="github">
+          <button type="button" name="github" onClick={handleGitHubLogin}>
             <img src={githubImg} alt="" />
             깃허브 계정으로 로그인
           </button>

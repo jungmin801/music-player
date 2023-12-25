@@ -68,6 +68,14 @@
     visibility 0s linear 0.3s;
 }
 
+.saveList {
+  color: var(--white);
+  border: 1px solid var(--white);
+  border-radius: 15px;
+  padding: 8px 20px;
+  min-height: fit-content;
+}
+
 @media screen and (max-width: 767px) {
   .nowPlayingList {
     width: 100%;

@@ -6,7 +6,7 @@
   background-color: white;
   color: black;
   width: 300px;
-  height: 150px;
+  /* height: 150px; */
   font-size: 14px;
   display: flex;
   flex-direction: column;
@@ -26,7 +26,7 @@
 }
 
 .modalContainer p {
-  flex-grow: 1;
+  /* flex-grow: 1; */
   display: flex;
   align-items: center;
 }
@@ -40,7 +40,7 @@
   margin: 15px auto;
 }
 
-.modalContainer button {
+.modalContainer .confirmButton {
   border: 1px solid var(--border);
   border-radius: 14px;
   min-height: fit-content;
@@ -48,14 +48,36 @@
   font-weight: bold;
 }
 
-.modalContainer button:last-child {
+.modalContainer .confirmButton:last-child {
   background-color: var(--pink);
   border: 1px solid var(--pink);
   color: var(--white);
   margin-left: 20px;
 }
 
-.modalContainer button:hover {
+.modalContainer .confirmButton:hover {
   border: 1px solid var(--pink);
   outline: 2px solid var(--pink);
+}
+
+.modalContainer .listButton {
+  min-height: fit-content;
+}
+
+.modalContainer h3 {
+  font-weight: bold;
+  margin: 15px 0;
+}
+
+.modalContainer ul {
+  padding: 5px 0;
+}
+
+.modalContainer li {
+  padding: 6px 0;
+  cursor: pointer;
+}
+
+.modalContainer li:hover {
+  background-color: #eee;
 }

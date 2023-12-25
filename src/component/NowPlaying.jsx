@@ -3,6 +3,8 @@ import styles from "./css/nowPlaying.module.css";
 import * as S from "./Button";
 import { useRecoilValue } from "recoil";
 import { SongItemsAtom, CurrentSongIndexAtom } from "../atoms/atomList";
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "../service/firebase";
 
 function Marker() {
   return <div className={styles.marker}></div>;
@@ -38,7 +40,7 @@ function PlayList({ showList }) {
   );
 }
 
-function NowPlaying() {
+function NowPlaying({ setShowModal, setLoadList }) {
   const songs = useRecoilValue(SongItemsAtom);
   const [showList, setShowList] = useState(true);
 
@@ -49,16 +51,43 @@ function NowPlaying() {
     setShowList(!showList);
   };
 
+  const handleLoadList = async () => {
+    setLoadList(null);
+    const querySnapshot = await getDocs(collection(db, "playlists"));
+    const result = querySnapshot.docs.map((doc) => doc.id);
+    setLoadList(result);
+  };
+
   return (
-    <div className={styles.nowPlayingList}>
-      <div className={styles.titleBox}>
-        <h2>Now Playing</h2>
-        <button type="button" className={styles.toggleBtn} onClick={handleList}>
-          <S.ToggleIcon />
+    <>
+      <div className={styles.nowPlayingList}>
+        <div className={styles.titleBox}>
+          <h2>Now Playing</h2>
+          <button
+            type="button"
+            className={styles.toggleBtn}
+            onClick={handleList}
+          >
+            <S.ToggleIcon />
+          </button>
+        </div>
+        <PlayList songs={songs} showList={showList} />
+        <button
+          type="button"
+          className={styles.saveList}
+          onClick={handleLoadList}
+        >
+          불러오기
+        </button>
+        <button
+          type="button"
+          className={styles.saveList}
+          onClick={() => setShowModal(true)}
+        >
+          저장하기
         </button>
       </div>
-      <PlayList songs={songs} showList={showList} />
-    </div>
+    </>
   );
 }
 

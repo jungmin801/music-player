@@ -4,7 +4,7 @@ import NowPlaying from "../component/NowPlaying";
 import Player from "../component/Player";
 import basicImg from "../image/basic.jpg";
 import styles from "./css/PlayPage.module.css";
-import Modal from "../component/Modal";
+import { InputModal, ListModal } from "../component/Modal";
 import { useRecoilValue } from "recoil";
 import { SongItemsAtom, CurrentSongIndexAtom } from "../atoms/atomList";
 
@@ -13,6 +13,7 @@ function PlayPage() {
   const currentSongIndex = useRecoilValue(CurrentSongIndexAtom);
   const [isPlaying, setIsPlaying] = useState(false);
   const [showModal, setShowModal] = useState(false);
+  const [loadList, setLoadList] = useState(null);
 
   return (
     <>
@@ -26,7 +27,7 @@ function PlayPage() {
       >
         <section className={styles.section}>
           <Card />
-          <NowPlaying setShowModal={setShowModal} />
+          <NowPlaying setShowModal={setShowModal} setLoadList={setLoadList} />
         </section>
         <Player
           className="player"
@@ -34,7 +35,8 @@ function PlayPage() {
           setIsPlaying={setIsPlaying}
         />
       </div>
-      {showModal ? <Modal setShowModal={setShowModal} /> : null}
+      {showModal ? <InputModal setShowModal={setShowModal} /> : null}
+      {loadList ? <ListModal loadList={loadList} /> : null}
     </>
   );
 }

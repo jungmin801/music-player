@@ -1,0 +1,42 @@
+form > * {
+  min-width: 350px;
+  margin: 0 auto;
+}
+
+form input {
+  padding: 10px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 12px;
+}
+
+form button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  border: 1px solid var(--border);
+  background-color: var(--white);
+  border-radius: 15px;
+  font-weight: bold;
+}
+
+form button:hover {
+  border: 1px solid var(--pink);
+  outline: 3px solid var(--pink);
+}
+
+form .submitBtn {
+  background-color: var(--pink);
+  border: 1px solid var(--pink);
+  color: var(--white);
+  margin-top: 20px;
+}
+
+hr {
+  margin: 20px;
+}
+
+form img {
+  width: 30px;
+  height: 30px;
+}

@@ -88,42 +88,23 @@
   gap: 15px;
 }
 
-.loginContainer > * {
-  min-width: 350px;
-}
-
-.loginContainer input {
-  padding: 10px;
-  border-bottom: 1px solid var(--border);
-}
-
-.loginContainer button {
+.loginContainer .menuContainer {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  border: 1px solid var(--border);
-  background-color: var(--white);
-  border-radius: 15px;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.loginContainer .menuContainer h2 {
+  font-size: 24px;
   font-weight: bold;
 }
 
-.loginContainer button:hover {
-  border: 1px solid var(--pink);
-  outline: 3px solid var(--pink);
+.loginContainer .menuContainer button {
+  border: none;
+  padding: 0 15px;
 }
 
-.loginContainer button:nth-of-type(1) {
-  background-color: var(--pink);
-  border: 1px solid var(--pink);
-  color: var(--white);
-}
-
-hr {
-  margin: 20px;
-}
-
-.loginContainer img {
-  width: 30px;
-  height: 30px;
+.loginContainer .menuContainer button:hover {
+  border: none;
+  outline: none;
 }

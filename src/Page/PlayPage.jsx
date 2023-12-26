@@ -12,7 +12,8 @@ function PlayPage() {
   const songs = useRecoilValue(SongItemsAtom);
   const currentSongIndex = useRecoilValue(CurrentSongIndexAtom);
   const [isPlaying, setIsPlaying] = useState(false);
-  const [showModal, setShowModal] = useState(false);
+  const [showInputModal, setShowInputModal] = useState(false);
+  const [showListModal, setShowListModal] = useState(false);
   const [loadList, setLoadList] = useState(null);
 
   return (
@@ -27,7 +28,11 @@ function PlayPage() {
       >
         <section className={styles.section}>
           <Card />
-          <NowPlaying setShowModal={setShowModal} setLoadList={setLoadList} />
+          <NowPlaying
+            setShowInputModal={setShowInputModal}
+            setShowListModal={setShowListModal}
+            setLoadList={setLoadList}
+          />
         </section>
         <Player
           className="player"
@@ -35,8 +40,12 @@ function PlayPage() {
           setIsPlaying={setIsPlaying}
         />
       </div>
-      {showModal ? <InputModal setShowModal={setShowModal} /> : null}
-      {loadList ? <ListModal loadList={loadList} /> : null}
+      {showInputModal ? (
+        <InputModal setShowInputModal={setShowInputModal} />
+      ) : null}
+      {showListModal ? (
+        <ListModal loadList={loadList} setShowListModal={setShowListModal} />
+      ) : null}
     </>
   );
 }

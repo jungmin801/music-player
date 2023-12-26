@@ -5,8 +5,9 @@ import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { setDoc, doc, getDoc } from "firebase/firestore";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import { SongItemsAtom } from "../atoms/atomList";
+import basicImg from "../image/basic.jpg";
 
-export const InputModal = ({ setShowModal }) => {
+export const InputModal = ({ setShowInputModal }) => {
   const songs = useRecoilValue(SongItemsAtom);
   const inputRef = useRef(null);
   let playListTitle = "";
@@ -18,7 +19,7 @@ export const InputModal = ({ setShowModal }) => {
   const handleSaveList = async (event) => {
     event.preventDefault();
     playListTitle = inputRef.current.value;
-    setShowModal(false);
+    setShowInputModal(false);
     try {
       const playlistCollectionRef = doc(db, "playlists", playListTitle);
       const playList = [];
@@ -33,7 +34,6 @@ export const InputModal = ({ setShowModal }) => {
           id: song.id,
           artist: song.artist,
           song: song.song,
-          image: song.image,
           url: storageURL,
         };
         playList.push(songData);
@@ -51,14 +51,14 @@ export const InputModal = ({ setShowModal }) => {
         className={styles.modalContainer}
         onSubmit={(event) => handleSaveList(event)}
       >
-        <p>저장할 재생 목록의 이름을 입력해주세요.</p>
+        <h3>저장할 재생 목록의 이름을 입력해주세요.</h3>
         <input type="text" ref={inputRef} />
         <div>
           <button
             className={styles.confirmButton}
             type="button"
             onClick={() => {
-              setShowModal(false);
+              setShowInputModal(false);
             }}
           >
             취소
@@ -70,7 +70,7 @@ export const InputModal = ({ setShowModal }) => {
   );
 };
 
-export const ListModal = ({ loadList }) => {
+export const ListModal = ({ loadList, setShowListModal }) => {
   const setSongs = useSetRecoilState(SongItemsAtom);
 
   const handleLoadMusic = async (event) => {
@@ -78,10 +78,38 @@ export const ListModal = ({ loadList }) => {
     const playlistDocRef = doc(db, "playlists", listName);
     try {
       const docSnapshot = await getDoc(playlistDocRef);
-      const result = docSnapshot.data();
-      setSongs(result.playList);
+      const result = docSnapshot.data().playList;
+
+      for (let data of result) {
+        const response = await fetch(data.url);
+        const blob = await response.blob();
+        window.jsmediatags.read(blob, {
+          onSuccess: function (tag) {
+            let albumCover = tag.tags.picture;
+
+            if (albumCover) {
+              const albumCoverBlob = new Blob(
+                [new Uint8Array(albumCover.data)],
+                { type: albumCover.format }
+              );
+              albumCover = URL.createObjectURL(albumCoverBlob);
+            } else {
+              albumCover = basicImg;
+            }
+            data.image = albumCover;
+            data.audio = URL.createObjectURL(blob);
+
+            setSongs((prev) => [...prev, data]);
+            setShowListModal(false);
+          },
+          onError: function (error) {
+            alert(JSON.stringify(error));
+          },
+        });
+      }
     } catch (error) {
       console.error(error);
+    } finally {
     }
   };
 
@@ -90,7 +118,7 @@ export const ListModal = ({ loadList }) => {
       <div className={styles.modalContainer}>
         <h3>재생할 목록을 선택하세요.</h3>
         <ul>
-          {loadList.map((title, index) => (
+          {loadList?.map((title, index) => (
             <li key={index} onDoubleClick={(event) => handleLoadMusic(event)}>
               <button type="button" className={styles.listButton}>
                 {title}

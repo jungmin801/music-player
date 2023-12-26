@@ -40,7 +40,7 @@ function PlayList({ showList }) {
   );
 }
 
-function NowPlaying({ setShowModal, setLoadList }) {
+function NowPlaying({ setShowInputModal, setShowListModal, setLoadList }) {
   const songs = useRecoilValue(SongItemsAtom);
   const [showList, setShowList] = useState(true);
 
@@ -52,10 +52,15 @@ function NowPlaying({ setShowModal, setLoadList }) {
   };
 
   const handleLoadList = async () => {
+    handleListModal();
     setLoadList(null);
     const querySnapshot = await getDocs(collection(db, "playlists"));
     const result = querySnapshot.docs.map((doc) => doc.id);
     setLoadList(result);
+  };
+
+  const handleListModal = () => {
+    setShowListModal(true);
   };
 
   return (
@@ -82,7 +87,7 @@ function NowPlaying({ setShowModal, setLoadList }) {
         <button
           type="button"
           className={styles.saveList}
-          onClick={() => setShowModal(true)}
+          onClick={() => setShowInputModal(true)}
         >
           저장하기
         </button>

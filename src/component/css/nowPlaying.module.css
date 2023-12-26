@@ -85,8 +85,9 @@
   color: var(--white);
   border: 1px solid var(--white);
   border-radius: 15px;
-  padding: 8px 20px;
+  padding: 8px 15px;
   min-height: fit-content;
+  font-size: 14px;
 }
 
 @media screen and (max-width: 767px) {
@@ -106,6 +107,8 @@
 
   .nowPlayingList ol {
     max-height: 80px;
+    width: 300px;
+    margin: 0 auto;
   }
 
   .nowPlayingList li {

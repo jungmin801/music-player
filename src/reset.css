@@ -24,11 +24,12 @@ button {
   background-color: transparent;
   border: none;
   outline: none;
+  font-size: inherit;
+  font-weight: inherit;
 }
 
 body {
   background-color: #eee;
-  /* color: var(--white) */
 }
 
 input {

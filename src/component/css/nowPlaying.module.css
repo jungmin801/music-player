@@ -68,6 +68,19 @@
     visibility 0s linear 0.3s;
 }
 
+.btnContainer {
+  margin: 20px 0 0 10px;
+}
+
+.btnContainer button:first-child {
+  margin-right: 15px;
+}
+
+.btnContainer button:hover {
+  border: 1px solid var(--pink);
+  background-color: var(--pink);
+}
+
 .saveList {
   color: var(--white);
   border: 1px solid var(--white);

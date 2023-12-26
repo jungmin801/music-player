@@ -77,20 +77,24 @@ function NowPlaying({ setShowInputModal, setShowListModal, setLoadList }) {
           </button>
         </div>
         <PlayList songs={songs} showList={showList} />
-        <button
-          type="button"
-          className={styles.saveList}
-          onClick={handleLoadList}
-        >
-          불러오기
-        </button>
-        <button
-          type="button"
-          className={styles.saveList}
-          onClick={() => setShowInputModal(true)}
-        >
-          저장하기
-        </button>
+        <div className={styles.btnContainer}>
+          <button
+            type="button"
+            className={styles.saveList}
+            onClick={handleLoadList}
+          >
+            불러오기
+          </button>
+          {songs.length > 0 ? (
+            <button
+              type="button"
+              className={styles.saveList}
+              onClick={() => setShowInputModal(true)}
+            >
+              저장하기
+            </button>
+          ) : null}
+        </div>
       </div>
     </>
   );

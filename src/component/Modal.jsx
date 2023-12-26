@@ -19,7 +19,6 @@ export const InputModal = ({ setShowInputModal }) => {
   const handleSaveList = async (event) => {
     event.preventDefault();
     playListTitle = inputRef.current.value;
-    setShowInputModal(false);
     try {
       const playlistCollectionRef = doc(db, "playlists", playListTitle);
       const playList = [];
@@ -29,7 +28,6 @@ export const InputModal = ({ setShowInputModal }) => {
         const storageURL = await uploadBytes(storageRef, song.file).then(() => {
           return getDownloadURL(storageRef);
         });
-
         const songData = {
           id: song.id,
           artist: song.artist,
@@ -38,8 +36,8 @@ export const InputModal = ({ setShowInputModal }) => {
         };
         playList.push(songData);
       }
-
       await setDoc(playlistCollectionRef, { playList });
+      setShowInputModal(false);
     } catch (error) {
       console.error("Error:", error);
     }

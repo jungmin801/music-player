@@ -44,12 +44,16 @@ function Card() {
         alt=""
         className={styles.albumImg}
       />
-      <h3 style={{ transform: `translateX(${scrollPosition}px)` }}>
-        <span ref={titleEl}>
-          {songs.length > 0 ? songs[currentSongIndex]?.song : "No Songs"}
-        </span>
-      </h3>
-      <p>{songs.length > 0 ? songs[currentSongIndex]?.artist : "No artist"}</p>
+      <div>
+        <h3 style={{ transform: `translateX(${scrollPosition}px)` }}>
+          <span ref={titleEl}>
+            {songs.length > 0 ? songs[currentSongIndex]?.song : "No Songs"}
+          </span>
+        </h3>
+        <p>
+          {songs.length > 0 ? songs[currentSongIndex]?.artist : "No artist"}
+        </p>
+      </div>
     </div>
   );
 }

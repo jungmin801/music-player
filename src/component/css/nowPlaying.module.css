@@ -97,11 +97,11 @@
   .nowPlayingList .titleBox {
     width: 100%;
     justify-content: center;
-    margin-bottom: 20px;
+    margin-bottom: 8px;
   }
 
   .nowPlayingList .titleBox > h2 {
-    font-size: 26px;
+    font-size: 24px;
   }
 
   .nowPlayingList ol {
@@ -110,11 +110,20 @@
 
   .nowPlayingList li {
     margin-bottom: 10px;
+    font-size: 14px;
   }
 
   .nowPlayingList .initialInfo {
     margin: 0 auto;
     text-align: center;
+  }
+
+  .nowPlayingList .btnContainer {
+    text-align: center;
+  }
+
+  .nowPlayingList .btnContainer button {
+    font-size: 14px;
   }
 }
 
@@ -150,5 +159,19 @@
 
   .nowPlayingList .initialInfo {
     display: none;
+  }
+
+  .nowPlayingList .btnContainer {
+    width: 100%;
+    position: fixed;
+    left: 50%;
+    bottom: 17%;
+    transform: translateX(-50%);
+    margin: 0;
+  }
+
+  .nowPlayingList .btnContainer button {
+    padding: 5px 16px;
+    font-size: 12px;
   }
 }

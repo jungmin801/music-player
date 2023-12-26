@@ -37,6 +37,7 @@ export function LoginForm({ setUserData, emailValue, passwordValue }) {
   };
   return (
     <form
+      className={styles.form}
       onSubmit={(event) =>
         handleBasicLogin(event, authService, emailValue, passwordValue)
       }
@@ -65,7 +66,7 @@ export function LoginForm({ setUserData, emailValue, passwordValue }) {
 
 export function SignUpForm() {
   return (
-    <form>
+    <form className={styles.form}>
       <input type="text" placeholder="example@gmail.com" />
       <input type="password" placeholder="password" />
       <button name="basic" className={styles.submitBtn}>

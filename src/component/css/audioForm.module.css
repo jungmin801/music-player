@@ -16,3 +16,15 @@
 .inputBox input {
   display: none;
 }
+
+@media screen and (max-width: 767px) {
+  nav {
+    width: 100vw;
+    justify-content: space-around;
+    gap: 30px;
+  }
+
+  .btnPlayGroup {
+    gap: 10px;
+  }
+}

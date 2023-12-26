@@ -1,18 +1,19 @@
-form {
-  min-width: 350px;
+.form {
+  min-width: 200px;
+  width: 85%;
 }
 
 form > * {
   width: 100%;
 }
 
-form input {
+.form input {
   padding: 10px;
   border-bottom: 1px solid var(--border);
   margin-bottom: 12px;
 }
 
-form button {
+.form button {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -23,12 +24,12 @@ form button {
   font-weight: bold;
 }
 
-form button:hover {
+.form button:hover {
   border: 1px solid var(--pink);
   outline: 3px solid var(--pink);
 }
 
-form .submitBtn {
+.form .submitBtn {
   background-color: var(--pink);
   border: 1px solid var(--pink);
   color: var(--white);
@@ -39,7 +40,19 @@ hr {
   margin: 20px 0;
 }
 
-form img {
+.form img {
   width: 30px;
   height: 30px;
+}
+
+@media screen and (max-width: 767px) {
+}
+
+@media screen and (max-width: 480px) {
+  .form button {
+    font-size: 14px;
+  }
+  .form .submitBtn {
+    font-size: 14px;
+  }
 }

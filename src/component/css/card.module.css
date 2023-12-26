@@ -34,12 +34,22 @@
     height: auto;
     align-items: center;
     justify-content: flex-end;
+    flex-direction: row;
+    gap: 8px;
   }
 
   .card .albumImg {
-    min-width: 200px;
-    max-width: 45%;
+    min-width: 100px;
+    width: 40%;
     margin: 0 auto;
+  }
+
+  .card h3 {
+    font-size: 28px;
+  }
+
+  .card > div {
+    width: 60%;
   }
 }
 
@@ -48,11 +58,19 @@
     position: fixed;
     top: 40%;
     transform: translateY(-50%);
-
+    flex-direction: column;
     justify-content: center;
   }
 
   .card .albumImg {
     margin: 0 auto;
+  }
+
+  .card h3 {
+    font-size: 20px;
+  }
+
+  .card p {
+    font-size: 14px;
   }
 }

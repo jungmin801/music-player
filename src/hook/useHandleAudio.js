@@ -32,6 +32,7 @@ export const useHandleAudio = (setSongs) => {
               song: title,
               image: albumCover,
               audio: urlObj,
+              file: file,
             };
 
             setSongs((prev) => [...prev, data]);

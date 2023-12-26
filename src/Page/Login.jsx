@@ -11,7 +11,6 @@ import { useNavigate } from "react-router-dom";
 import styles from "./css/Login.module.css";
 import noteImg from "../image/note.png";
 import googleImg from "../image/google.png";
-import githubImg from "../image/github.png";
 
 const Login = () => {
   const [userData, setUserData] = useState(null);
@@ -21,18 +20,6 @@ const Login = () => {
 
   const handleGoogleLogin = () => {
     const provider = new GoogleAuthProvider();
-    signInWithPopup(authService, provider)
-      .then((data) => {
-        setUserData(data.user);
-        navigate("/player");
-      })
-      .catch((error) => {
-        console.error(error.message);
-      });
-  };
-
-  const handleGitHubLogin = () => {
-    const provider = new GithubAuthProvider();
     signInWithPopup(authService, provider)
       .then((data) => {
         setUserData(data.user);
@@ -90,10 +77,6 @@ const Login = () => {
           <button type="button" name="google" onClick={handleGoogleLogin}>
             <img src={googleImg} alt="" />
             구글 계정으로 로그인
-          </button>
-          <button type="button" name="github" onClick={handleGitHubLogin}>
-            <img src={githubImg} alt="" />
-            깃허브 계정으로 로그인
           </button>
         </div>
       </div>

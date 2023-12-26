@@ -80,7 +80,14 @@ export const InputModal = ({ setShowInputModal }) => {
 };
 
 export const ListModal = ({ loadList, setShowListModal }) => {
+  const modalRef = useRef();
   const setSongs = useSetRecoilState(SongItemsAtom);
+
+  const handleClickOutside = (event) => {
+    if (modalRef.current === event.target) {
+      setShowListModal(false);
+    }
+  };
 
   const handleLoadMusic = async (event) => {
     const listName = event.target.innerText;
@@ -123,7 +130,11 @@ export const ListModal = ({ loadList, setShowListModal }) => {
   };
 
   return (
-    <div className={styles.modalBg}>
+    <div
+      className={styles.modalBg}
+      ref={modalRef}
+      onClick={(event) => handleClickOutside(event)}
+    >
       <div className={styles.modalContainer}>
         <h3>재생할 목록을 더블클릭하여 선택하세요.</h3>
         <ul>

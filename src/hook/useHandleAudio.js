@@ -1,7 +1,5 @@
 import { useCallback } from "react";
 import basicImg from "../image/basic.jpg";
-import { storage } from "../service/firebase";
-import { ref, uploadBytes } from "firebase/storage";
 
 export const useHandleAudio = (setSongs) => {
   const handleAudio = useCallback(
@@ -10,18 +8,7 @@ export const useHandleAudio = (setSongs) => {
       for (let i = 0; i < files.length; i += 1) {
         const file = event.target.files[i];
         const urlObj = URL.createObjectURL(file);
-        const src = urlObj;
-        const id = src.slice(-12);
-
-        const storageRef = ref(storage, "uploads/" + file.name);
-
-        uploadBytes(storageRef, file)
-          .then((snapshot) => {
-            console.log(snapshot);
-          })
-          .catch((error) => {
-            console.error(error);
-          });
+        const id = urlObj.slice(-12);
 
         window.jsmediatags.read(file, {
           onSuccess: function (tag) {
@@ -44,7 +31,7 @@ export const useHandleAudio = (setSongs) => {
               artist: artist,
               song: title,
               image: albumCover,
-              audio: src,
+              audio: urlObj,
             };
 
             setSongs((prev) => [...prev, data]);

@@ -1,22 +1,20 @@
 import PlayPage from "./Page/PlayPage";
 import Login from "./Page/Login";
-import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
+import { Route, Routes, Navigate } from "react-router-dom";
 import "./reset.css";
 import "./App.css";
 
 function App() {
   return (
     <div className="App">
-      <BrowserRouter>
-        <Routes>
-          <Route
-            path="/music-player"
-            element={<Navigate to="/login" replace />}
-          />
-          <Route path="/login" element={<Login />} />
-          <Route path="/player" element={<PlayPage />} />
-        </Routes>
-      </BrowserRouter>
+      <Routes>
+        <Route
+          path="/music-player"
+          element={<Navigate to="/login" replace />}
+        />
+        <Route path="/login" element={<Login />} />
+        <Route path="/player" element={<PlayPage />} />
+      </Routes>
     </div>
   );
 }

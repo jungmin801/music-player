@@ -8,10 +8,7 @@ function App() {
   return (
     <div className="App">
       <Routes>
-        <Route
-          path="/music-player"
-          element={<Navigate to="/login" replace />}
-        />
+        <Route path="/" element={<Navigate to="/login" replace />} />
         <Route path="/login" element={<Login />} />
         <Route path="/player" element={<PlayPage />} />
       </Routes>

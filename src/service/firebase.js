@@ -1,16 +1,18 @@
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 import { getStorage } from "firebase/storage";
+import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAY40ImWYkekl6zZaOBVlWJY3e9mYtC0Pc",
-  authDomain: "music-player-43864.firebaseapp.com",
-  projectId: "music-player-43864",
-  storageBucket: "music-player-43864.appspot.com",
-  messagingSenderId: "444225018387",
-  appId: "1:444225018387:web:0cf10f63a7f13636d5bde6",
+  apiKey: "AIzaSyCUqqz4onuSce1opiLCxoJ2V_BAMSAkCbQ",
+  authDomain: "music-player-ca0b4.firebaseapp.com",
+  projectId: "music-player-ca0b4",
+  storageBucket: "music-player-ca0b4.appspot.com",
+  messagingSenderId: "501256731627",
+  appId: "1:501256731627:web:1fcaab40c492201ddf77ae",
 };
 
 export const app = initializeApp(firebaseConfig);
 export const authService = getAuth();
 export const storage = getStorage(app);
+export const db = getFirestore(app);

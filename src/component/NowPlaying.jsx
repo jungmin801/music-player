@@ -83,7 +83,7 @@ function NowPlaying({ setShowInputModal, setShowListModal, setLoadList }) {
             className={styles.saveList}
             onClick={handleLoadList}
           >
-            불러오기
+            리스트 불러오기
           </button>
           {songs.length > 0 ? (
             <button

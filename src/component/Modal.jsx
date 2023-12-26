@@ -92,6 +92,7 @@ export const ListModal = ({ loadList, setShowListModal }) => {
   const handleLoadMusic = async (event) => {
     const listName = event.target.innerText;
     const playlistDocRef = doc(db, "playlists", listName);
+    setSongs([]);
     try {
       const docSnapshot = await getDoc(playlistDocRef);
       const result = docSnapshot.data().playList;
